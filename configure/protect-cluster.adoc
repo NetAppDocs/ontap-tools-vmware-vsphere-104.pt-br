@@ -1,0 +1,51 @@
+---
+permalink: configure/protect-cluster.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: As ONTAP tools for VMware vSphere gerenciam a proteção de clusters de host. 
+---
+= Proteger usando proteção de cluster de host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ONTAP tools for VMware vSphere gerenciam a proteção de clusters de host.  Todos os datastores pertencentes ao SVM selecionado e montados em um ou mais hosts do cluster são protegidos por um cluster de host.
+
+.Antes de começar
+Certifique-se de que os seguintes pré-requisitos sejam atendidos:
+
+* O cluster host tem armazenamentos de dados apenas de uma SVM.
+* O armazenamento de dados montado no cluster do host não deve ser montado em nenhum host fora do cluster.
+* Todos os Datastores montados no cluster host devem ser datastores VMFS com protocolo iSCSI/FC. Datastores vVols, NFS ou VMFS com protocolos NVMe/FC e NVMe/TCP não são suportados.
+* Os datastores de formação do FlexVol/LUN montados no cluster host não devem fazer parte de nenhum grupo de consistência (CG) existente.
+* Os datastores de formação FlexVol/LUN montados no cluster host não devem fazer parte de nenhum relacionamento SnapMirror existente.
+* O cluster host deve ter pelo menos um armazenamento de dados.
+
+
+.Passos
+. Efetue login no cliente vSphere.
+. Clique com o botão direito do mouse em um cluster de host e selecione * Ferramentas NetApp ONTAP * > *Proteger Cluster*.
+. Na janela de proteção do cluster, os detalhes do tipo de armazenamento de dados e da máquina virtual (VM) de armazenamento de origem são preenchidos automaticamente. Selecione o link dos armazenamentos de dados para visualizar os armazenamentos de dados protegidos.
+. Digite o *nome do grupo de consistência*.
+. Selecione *Adicionar Relacionamento*.
+. Na janela *Adicionar relacionamento SnapMirror *, selecione a *VM de armazenamento de destino* e o tipo de *Política*.
++
+O tipo de política pode ser Assíncrono ou AutomatedFailOverDuplex.
+
++
+Ao adicionar o relacionamento SnapMirror como uma política do tipo AutomatedFailOverDuplex, você deve adicionar a VM de armazenamento de destino como backend de armazenamento ao mesmo vCenter onde as ONTAP tools for VMware vSphere estão implantadas.
+
++
+No tipo de política AutomatedFailOverDuplex, há configurações de host uniformes e não uniformes. Quando você seleciona o botão de alternância *configuração uniforme do host*, a configuração do grupo iniciador do host é replicada implicitamente no site de destino. Para mais detalhes, consultelink:../concepts/ontap-tools-concepts-terms.html["Principais conceitos e termos"] .
+
+. Se você optar por ter uma configuração de host não uniforme, selecione o acesso ao host (origem/destino) para cada host dentro desse cluster.
+. Selecione *Adicionar*.
+. Na janela *Proteger cluster*, você não pode editar o cluster protegido durante a operação de criação.  Você pode excluir e adicionar proteção novamente.  Durante a operação Modificar proteção do cluster do host, a opção de edição está disponível. Você pode editar ou excluir os relacionamentos usando as opções do menu de reticências.
+. Selecione o botão *Proteger*.
++
+Uma tarefa do vCenter é criada com detalhes do ID do trabalho e seu progresso é mostrado no painel de tarefas recentes.  Esta é uma tarefa assíncrona; a interface do usuário mostra apenas o status de envio da solicitação e não espera a conclusão da tarefa.
+
+. Para visualizar os clusters de host protegidos, navegue até * Ferramentas NetApp ONTAP * > * Proteção * > * Relacionamentos de cluster de host *.
+

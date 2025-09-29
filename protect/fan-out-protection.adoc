@@ -1,0 +1,47 @@
+---
+permalink: protect/fan-out-protection.html 
+sidebar: sidebar 
+keywords:  
+summary: Em uma proteção de fan out, o grupo de consistência é duplamente protegido com relacionamento síncrono no primeiro cluster ONTAP de destino e com relacionamento assíncrono no segundo cluster ONTAP de destino. 
+---
+= Proteção contra dispersão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Em uma proteção de fan out, o grupo de consistência é duplamente protegido com relacionamento síncrono no primeiro cluster ONTAP de destino e com relacionamento assíncrono no segundo cluster ONTAP de destino. Os fluxos de trabalho de criação, edição e exclusão da proteção de sincronização ativa do SnapMirror mantêm a proteção síncrona.  Os fluxos de trabalho de failover e reproteção do SRM mantêm a proteção assíncrona.
+
+Para estabelecer a proteção de fan out, você precisa conectar três clusters de sites e SVMs.
+
+Exemplo:
+
+|===
+
+
+| Se | então 
+
+
+ a| 
+* O grupo de consistência de origem está no cluster c1 e SVM svm1
+* O primeiro grupo de consistência de destino está no cluster c2 e SVM svm2 e
+* O segundo grupo de consistência de destino está no cluster c3 e SVM svm3
+
+ a| 
+* O cluster que faz peering no cluster ONTAP de origem será (C1, C2) e (C1, C3).
+* O cluster que faz peering no primeiro cluster ONTAP de destino será (C2, C1) e (C2, C3) e
+* O cluster que faz peering no segundo cluster ONTAP de destino será (C3, C1) e (C3, C2).
+* O peering SVM no SVM de origem será (svm1, svm2) e (svm1, svm3).
+* O peering SVM no primeiro destino SVM será (svm2, svm1) e (svm2, svm3) e
+* O peering SVM no segundo destino svm será (svm3, svm1) e (svm3, svm2).
+
+
+|===
+O diagrama a seguir mostra a configuração da proteção fan out:image:../media/fan-out-protection.png["Configuração de proteção contra fan out"] image:../media/fan-out-protection-relationship.png["Relação de proteção de ventilador"]
+
+*Passos*
+
+. Crie um novo repositório de dados de espaço reservado. Referir https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/site-recovery-manager/8-8/site-recovery-manager-administration-8-8/about-placeholder-virtual-machines/configure-a-placeholder-datastore.html["Selecione um repositório de dados de espaço reservado"]
+. Adicionar armazenamento de dados para hospedar a proteção do clusterlink:../manage/edit-hostcluster-protection.html["Modificar cluster de host protegido"] .  Você precisa adicionar tipos de políticas assíncronas e síncronas.
+

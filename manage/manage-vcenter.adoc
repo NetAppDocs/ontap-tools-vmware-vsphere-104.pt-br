@@ -1,0 +1,63 @@
+---
+permalink: manage/manage-vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: vCenters são plataformas de gerenciamento central que permitem controlar hosts, máquinas virtuais e backends de armazenamento. 
+---
+= Gerenciar instâncias do vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As instâncias do vCenter Server são plataformas de gerenciamento central que permitem controlar hosts, máquinas virtuais e backends de armazenamento.
+
+
+
+== Desassociar backends de armazenamento com a instância do vCenter Server
+
+A página de listagem do vCenter Server mostra o número associado de backends de armazenamento.  Cada instância do vCenter Server tem a opção de se associar ou desassociar de um backend de armazenamento.
+
+.Passos
+. Inicie o ONTAP Tools Manager em um navegador da web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Efetue login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+. Selecione a instância necessária do vCenter Server na barra lateral.
+. Selecione as elipses verticais no vCenter Server que você deseja associar ou dissociar dos backends de armazenamento.
+. Selecione *Dissociar backend de armazenamento*.
+
+
+
+
+== Modificar uma instância do vCenter Server
+
+Siga as etapas abaixo para modificar instâncias do vCenter Server.
+
+. Inicie o ONTAP Tools Manager em um navegador da web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Efetue login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+. Selecione a instância aplicável do vCenter Server na barra lateral
+. Selecione as elipses verticais no vCenter Server que você deseja modificar e selecione *Modificar*.
+. Modifique os detalhes da instância do vCenter Server e selecione *Modificar*.
+
+
+
+
+== Remover uma instância do vCenter Server
+
+Você precisa remover todos os backends de armazenamento conectados ao vCenter Server antes de removê-lo.
+
+. Inicie o ONTAP Tools Manager em um navegador da web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Efetue login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+. Selecione as instâncias aplicáveis do vCenter Server na barra lateral
+. Selecione as elipses verticais no vCenter Server que você deseja remover e selecione *Remover*.
++
+
+NOTE: Após remover instâncias do vCenter Server, elas não serão mais mantidas pelo aplicativo.
+
+
+
+Quando você remove instâncias do vCenter Server nas ferramentas ONTAP , as seguintes ações são executadas automaticamente:
+
+* O plug-in não está registrado.
+* Privilégios e funções de plug-in são removidos.
+

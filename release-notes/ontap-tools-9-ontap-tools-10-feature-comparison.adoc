@@ -1,0 +1,46 @@
+---
+permalink: release-notes/ontap-tools-9-ontap-tools-10-feature-comparison.html 
+sidebar: sidebar 
+keywords: release notes, feature, comparison 
+summary: Saiba mais sobre a comparação de recursos das ONTAP tools for VMware vSphere 9 e ONTAP tools for VMware vSphere 10 
+---
+= Comparação de recursos das ONTAP tools for VMware vSphere 9 e ONTAP tools for VMware vSphere 10
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba se a migração das ONTAP tools for VMware vSphere 9 para as ONTAP tools for VMware vSphere 10.1 ou versões posteriores é ideal para você.
+
+
+NOTE: Para obter as informações de compatibilidade mais atualizadas, consulte https://mysupport.netapp.com/matrix["Ferramenta de Matriz de Interoperabilidade da NetApp"^] .
+
+[cols="20%,25%,25%,30%"]
+|===
+| Recurso | Ferramentas ONTAP 9.13 | Ferramentas ONTAP 10.1 | Ferramentas ONTAP 10.2 em diante 
+
+
+| Proposta de valor chave | Simplifique e otimize as operações do dia 0 ao dia 2 com recursos aprimorados de segurança, conformidade e automação | Evolução das ferramentas ONTAP 10.x em direção à paridade 9.xx, ao mesmo tempo em que estende os limites de alta disponibilidade, desempenho e escala | Suporte expandido para incluir FC para VMFS e vVols, e NVMe-oF/FC, NVMe-oF/TCP somente para VMFS.  Facilidade de uso para NetApp SnapMirror, configuração simples para clusters de armazenamento metro vSphere e suporte VMware Live Site Recovery de três sites 
+
+
+| Qualificação de liberação ONTAP | ONTAP 9.9.1 para ONTAP 9.16.1 | ONTAP 9.12.1 para ONTAP 9.14.1 | ONTAP 9.12.1 para ONTAP 9.15.1 para ferramentas ONTAP 10.2. ONTAP 9.14.1, 9.15.1, 9.16.0 e 9.16.1 para ferramentas ONTAP 10.3. ONTAP 9.14.1, 9.15.1, 9.16.0 e 9.16.1 para ferramentas ONTAP 10.4. ONTAP 9.16.1P3 e posterior é necessário para as ferramentas ONTAP 10.4 ao usar sistemas ASA r2. 
+
+
+| Suporte à versão VMware | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.5 para VMware Live Site Recovery 9.0 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.7 para VMware Live Site Recovery 9.0 | vSphere 7.x-8.x VMware Site Recovery Manager (SRM) 8.7 para VMware Live Site Recovery 9.0 
+
+
+| Suporte de protocolo | Armazenamentos de dados NFS e VMFS: NFS (v3 e v4.1), VMFS (iSCSI e FCP) Armazenamentos de dados vVols : iSCSI, FCP, NVMe/FC, NFS v3 | Armazenamentos de dados NFS e VMFS: NFS (v3 e v4.1), VMFS (iSCSI) Armazenamentos de dados vVols : iSCSI, NFS v3 | Armazenamentos de dados NFS e VMFS: NFS (v3 e v4.1), VMFS (iSCSI/FCP/NVMe-oF) Armazenamentos de dados vVols : iSCSI, FCP, NFS v3 
+
+
+| Escalabilidade | Hosts e VMs: 300 hosts, até 10 mil VMs Datastores: 600 NFS, até 50 VMFS, até 250 vVols vVols: até 14.000 | Hosts e VMs: 600 Hosts vVols: Até 140.000 | Hosts e VMs: 600 Hosts vVols: Até 140.000 
+
+
+| Observabilidade | Painéis de desempenho, capacidade e conformidade do host Relatórios dinâmicos de VM e armazenamento de dados | Painéis atualizados de desempenho, capacidade e conformidade do host Relatórios dinâmicos de VM e armazenamento de dados | Painéis atualizados de desempenho, capacidade e conformidade do host Relatórios dinâmicos de VM e armazenamento de dados 
+
+
+| Proteção de dados | Replicação SRA para VMFS e NFS Replicação baseada em FlexVols para vVols Integração SCV e interoperável para backup | Replicação SRA para armazenamentos de dados iSCSI VMFS e NFS v3 | Replicação SRA para proteção de três sites de datastores iSCSI VMFS e NFS v3 combinando SMAS e VMware Live Site Recovery. 
+
+
+| Suporte do provedor VASA | VASA 4.0 | VASA 3.0 | VASA 3.0 
+|===

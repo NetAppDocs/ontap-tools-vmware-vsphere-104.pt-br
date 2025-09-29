@@ -1,0 +1,31 @@
+---
+permalink: protect/configure-placeholder-datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você deve configurar um repositório de dados de espaço reservado para armazenar um espaço no inventário do vCenter no local de recuperação da máquina virtual protegida (VM). O repositório de dados de espaço reservado não precisa ser grande, pois as VMs de espaço reservado são pequenas e ocupam apenas algumas centenas de quilobytes ou menos.' 
+---
+= Configurar armazenamentos de dados de espaço reservado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve configurar um repositório de dados de espaço reservado para armazenar um espaço no inventário do vCenter no local de recuperação da máquina virtual (VM) protegida. O repositório de dados de espaço reservado não precisa ser grande, pois as VMs de espaço reservado são pequenas e ocupam apenas algumas centenas de quilobytes ou menos.
+
+.Antes de começar
+* Você deve ter conectado os sites protegidos e de recuperação.
+* Você deve ter configurado seus mapeamentos de recursos.
+
+
+.Passos
+. Faça login no vCenter Server e selecione *Site Recovery* > *Sites*.
+. Selecione seu site protegido e selecione *Gerenciar*.
+. Selecione *Datastores de espaço reservado* > *Novo* na guia Gerenciar para criar um novo datastore de espaço reservado.
+. Selecione o armazenamento de dados apropriado e selecione *OK*.
++
+
+NOTE: Os armazenamentos de dados de espaço reservado podem ser locais ou remotos e não devem ser replicados.
+
+. Repita as etapas 3 a 5 para configurar um armazenamento de dados de espaço reservado para o site de recuperação.
+

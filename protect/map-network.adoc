@@ -1,0 +1,42 @@
+---
+permalink: protect/map-network.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve mapear suas redes no site protegido e no site de recuperação para permitir a comunicação entre elas. 
+---
+= Configurar mapeamentos de rede
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve configurar seus mapeamentos de recursos, como redes de VM, hosts ESXi e pastas em ambos os sites para permitir o mapeamento de cada recurso do site protegido para o recurso apropriado no site de recuperação.
+
+Você deve concluir as seguintes configurações de recursos:
+
+* Mapeamentos de rede
+* Mapeamentos de pastas
+* Mapeamentos de recursos
+* Armazenamentos de dados de espaço reservado
+
+
+.Antes de começar
+Você deve ter conectado os sites protegidos e de recuperação.
+
+.Passos
+. Faça login no vCenter Server e selecione *Site Recovery* > *Sites*.
+. Selecione seu site protegido e selecione *Gerenciar*.
+. Selecione *Mapeamentos de rede* > *Novo* na guia Gerenciar para criar um novo mapeamento de rede.
+. No assistente Criar mapeamento de rede, faça o seguinte:
++
+.. Selecione *Preparar automaticamente mapeamentos para redes com nomes correspondentes* e selecione *Avançar*.
+.. Selecione os objetos de data center necessários para os sites protegidos e de recuperação e selecione *Adicionar mapeamentos*.
+.. Selecione *Avançar* depois que os mapeamentos forem criados com sucesso.
+.. Selecione o objeto usado anteriormente para criar o mapeamento reverso e selecione *Concluir*.
+
+
+
+
+.Resultado
+A página Mapeamentos de rede exibe os recursos do site protegido e os recursos do site de recuperação.  Você pode seguir os mesmos passos para outras redes em seu ambiente.

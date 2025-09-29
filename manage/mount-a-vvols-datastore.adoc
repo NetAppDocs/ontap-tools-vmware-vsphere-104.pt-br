@@ -1,0 +1,23 @@
+---
+permalink: manage/mount-a-vvols-datastore.html 
+sidebar: sidebar 
+keywords: Mount vVol 
+summary: 'Você pode montar um armazenamento de dados VMware Virtual Volumes \(vVols\) em um ou mais hosts adicionais usando a caixa de diálogo Montar armazenamento de dados vVols .  A montagem do armazenamento de dados fornece acesso de armazenamento a hosts adicionais.  Você pode desmontar o armazenamento de dados vVols somente por meio das APIs.' 
+---
+= Montar um armazenamento de dados vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode montar um armazenamento de dados VMware Virtual Volumes (vVols) em um ou mais hosts adicionais para fornecer acesso de armazenamento a hosts adicionais.  Você pode desmontar o armazenamento de dados vVols somente por meio das APIs.
+
+.Passos
+. Na página inicial do vSphere Client, selecione *Hosts e Clusters*.
+. No painel de navegação, selecione o data center que contém o armazenamento de dados.
+. Clique com o botão direito do mouse no armazenamento de dados e selecione * Ferramentas NetApp ONTAP * > *Montar armazenamento de dados*.
+. Na caixa de diálogo *Montar datastores em hosts*, selecione os hosts nos quais você deseja montar o datastore e, em seguida, selecione *Montar*.
+
+
+Você pode acompanhar o progresso no painel de tarefas recentes.

@@ -1,0 +1,59 @@
+---
+permalink: concepts/rbac-vcenter-environment.html 
+sidebar: sidebar 
+keywords: vcenter, vcenter server, vcenter server rbac, rbac environment 
+summary: O VMware vCenter Server fornece um recurso RBAC que permite controlar o acesso a objetos do vSphere.  É uma parte importante dos serviços de segurança de autenticação e autorização centralizados do vCenter. 
+---
+= Ambiente RBAC do vCenter Server com ONTAP tools for VMware vSphere 10
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+O VMware vCenter Server fornece um recurso RBAC que permite controlar o acesso a objetos do vSphere.  É uma parte importante dos serviços de segurança de autenticação e autorização centralizados do vCenter.
+
+
+
+== Ilustração de uma permissão do vCenter Server
+
+Uma permissão é a base para impor o controle de acesso no ambiente do vCenter Server.  Ele é aplicado a um objeto vSphere com um usuário ou grupo incluído na definição de permissão.  Uma ilustração de alto nível de uma permissão do vCenter é fornecida na figura abaixo.
+
+image:vc-permission.png["Permissão do vCenter"]
+
+
+
+== Componentes de uma permissão do vCenter Server
+
+Uma permissão do vCenter Server é um pacote de vários componentes que são vinculados quando a permissão é criada.
+
+
+
+=== Objetos vSphere
+
+As permissões são associadas a objetos do vSphere, como o vCenter Server, hosts ESXi, máquinas virtuais, armazenamentos de dados, data centers e pastas.  Com base nas permissões atribuídas ao objeto, o vCenter Server determina quais ações ou tarefas podem ser executadas no objeto por cada usuário ou grupo.  Para as tarefas específicas das ONTAP tools for VMware vSphere, todas as permissões são atribuídas e validadas no nível raiz ou da pasta raiz do vCenter Server. Ver link:../concepts/rbac-vcenter-use.html["Usar RBAC com o servidor vCenter"] para maiores informações.
+
+
+
+=== Privileges e funções
+
+Há dois tipos de privilégios do vSphere usados ​​com ONTAP tools for VMware vSphere 10.  Para simplificar o trabalho com o RBAC neste ambiente, as ferramentas ONTAP fornecem funções contendo os privilégios nativos e personalizados necessários.  Os privilégios incluem:
+
+* Privilégios nativos do vCenter Server
++
+Esses são os privilégios fornecidos pelo vCenter Server.
+
+* Privilégios específicos das ferramentas ONTAP
++
+Esses são privilégios personalizados exclusivos das ONTAP tools for VMware vSphere.
+
+
+
+
+
+=== Usuários e grupos
+
+Você pode definir usuários e grupos usando o Active Directory ou a instância local do vCenter Server. Combinado com uma função, você pode criar uma permissão para um objeto na hierarquia de objetos do vSphere. A permissão concede acesso com base nos privilégios da função associada. Observe que as funções não são atribuídas diretamente aos usuários isoladamente. Em vez disso, usuários e grupos obtêm acesso a um objeto por meio de privilégios de função como parte da permissão mais ampla do vCenter Server.

@@ -1,0 +1,62 @@
+---
+permalink: concepts/rbac-ontap-environment.html 
+sidebar: sidebar 
+keywords: ontap rbac, ontap rbac environment 
+summary: ONTAP fornece um ambiente RBAC robusto e extensível.  Você pode usar o recurso RBAC para controlar o acesso ao armazenamento e às operações do sistema, conforme exposto pela API REST e CLI.  É útil estar familiarizado com o ambiente antes de usá-lo com uma implantação de ONTAP tools for VMware vSphere 10. 
+---
+= Ambiente ONTAP RBAC com ONTAP tools for VMware vSphere 10
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP fornece um ambiente RBAC robusto e extensível.  Você pode usar o recurso RBAC para controlar o acesso ao armazenamento e às operações do sistema, conforme exposto pela API REST e CLI.  É útil estar familiarizado com o ambiente antes de usá-lo com uma implantação de ONTAP tools for VMware vSphere 10.
+
+
+
+== Visão geral das opções administrativas
+
+Há várias opções disponíveis ao usar o ONTAP RBAC, dependendo do seu ambiente e objetivos.  Uma visão geral das principais decisões administrativas é apresentada abaixo.  Veja também https://docs.netapp.com/us-en/ontap-automation/rest/rbac_overview.html["Automação ONTAP : Visão geral da segurança RBAC"^] para mais informações.
+
+
+NOTE: O ONTAP RBAC é adaptado para um ambiente de armazenamento e é mais simples do que a implementação do RBAC fornecida com o vCenter Server. Com o ONTAP, você atribui uma função diretamente ao usuário. Não é necessário configurar permissões explícitas, como aquelas usadas com o vCenter Server, com o ONTAP RBAC.
+
+.Tipos de funções e privilégios
+Uma função ONTAP é necessária ao definir um usuário ONTAP .  Existem dois tipos de funções ONTAP :
+
+* DESCANSAR
++
+As funções REST foram introduzidas com o ONTAP 9.6 e geralmente são aplicadas a usuários que acessam o ONTAP por meio da API REST.  Os privilégios incluídos nessas funções são definidos em termos de acesso aos pontos de extremidade da API REST do ONTAP e às ações associadas.
+
+* Tradicional
++
+Estas são as funções legadas incluídas antes do ONTAP 9.6.  Eles continuam sendo um aspecto fundamental do RBAC.  Os privilégios são definidos em termos de acesso aos comandos da CLI do ONTAP .
+
+
+
+Embora as funções REST tenham sido introduzidas mais recentemente, as funções tradicionais têm algumas vantagens.  Por exemplo, parâmetros de consulta adicionais podem ser incluídos opcionalmente para que os privilégios definam com mais precisão os objetos aos quais são aplicados.
+
+.Escopo
+As funções do ONTAP podem ser definidas com um de dois escopos diferentes.  Eles podem ser aplicados a um SVM de dados específico (nível SVM) ou a todo o cluster ONTAP (nível de cluster).
+
+.Definições de funções
+O ONTAP fornece um conjunto de funções predefinidas no nível do cluster e do SVM.  Você também pode definir funções personalizadas.
+
+
+
+== Trabalhando com funções REST do ONTAP
+
+Há várias considerações ao usar as funções REST do ONTAP incluídas nas ONTAP tools for VMware vSphere 10.
+
+.Mapeamento de funções
+Seja usando uma função tradicional ou REST, todas as decisões de acesso ONTAP são tomadas com base no comando CLI subjacente.  Mas como os privilégios em uma função REST são definidos em termos dos pontos de extremidade da API REST, o ONTAP precisa criar uma função tradicional _mapeada_ para cada uma das funções REST.  Portanto, cada função REST é mapeada para uma função tradicional subjacente.  Isso permite que o ONTAP tome decisões de controle de acesso de maneira consistente, independentemente do tipo de função.  Você não pode modificar as funções mapeadas paralelamente.
+
+.Definindo uma função REST usando privilégios CLI
+Como o ONTAP sempre usa os comandos CLI para determinar o acesso em um nível básico, é possível expressar uma função REST usando privilégios de comando CLI em vez de pontos de extremidade REST.  Um benefício dessa abordagem é a granularidade adicional disponível com as funções tradicionais.
+
+.Interface administrativa ao definir funções ONTAP
+Você pode criar usuários e funções com o ONTAP CLI e a REST API.  No entanto, é mais conveniente usar a interface do System Manager junto com o arquivo JSON disponível através do ONTAP tools Manager. Ver link:../concepts/rbac-ontap-use.html["Use o ONTAP RBAC com ONTAP tools for VMware vSphere 10"] para maiores informações.

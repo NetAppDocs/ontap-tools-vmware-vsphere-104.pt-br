@@ -1,0 +1,47 @@
+---
+permalink: manage/delete-ds.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: A ação Excluir armazenamento de dados exclui o armazenamento de dados.  No caso do armazenamento de dados NFS ou VMFS, uma caixa de diálogo aparece com a lista de VMs que estão usando o armazenamento de dados. 
+---
+= Excluir armazenamentos de dados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A ação Remover armazenamento do repositório de dados é suportada em todas as ONTAP tools for VMware vSphere para repositórios de dados vVols descobertos ou gerenciados pelo VMware vSphere no vCenter Server.  Esta ação permite a remoção de volumes dos armazenamentos de dados vVols .
+
+A opção de remoção é desabilitada quando há vVols residindo em um volume específico.  Além de remover volumes do armazenamento de dados, você pode excluir o volume selecionado no armazenamento ONTAP .
+
+A tarefa de exclusão do armazenamento de dados das ONTAP tools for VMware vSphere no vCenter Server faz o seguinte:
+
+* Desmonta o contêiner vVol.
+* Limpa o igroup.  Se o igroup não estiver em uso, remove o iqn do igroup.
+* Exclui o contêiner Vvol.
+* Deixa os volumes Flex no array de armazenamento.
+
+
+Siga as etapas abaixo para excluir o armazenamento de dados NFS, VMFS ou vVOL das ferramentas ONTAP do vCenter Server:
+
+.Passos
+. Efetue login no cliente vSphere.
+. Clique com o botão direito do mouse em um sistema host, em um cluster de host ou em um data center e selecione * Ferramentas NetApp ONTAP * > * Excluir armazenamento de dados *.
++
+
+NOTE: Você não pode excluir os armazenamentos de dados se houver máquinas virtuais usando esse armazenamento de dados.  Você precisa mover as máquinas virtuais para um armazenamento de dados diferente antes de excluí-lo.  Não é possível selecionar a caixa de seleção Excluir volume se o armazenamento de dados pertencer a um cluster de host protegido.
+
++
+.. No caso do armazenamento de dados NFS ou VMFS, uma caixa de diálogo aparece com a lista de VMs que estão usando o armazenamento de dados.
+.. Se o armazenamento de dados VMFS for criado em sistemas ASA r2 e fizer parte da proteção, você precisará desproteger o armazenamento de dados antes de excluí-lo.
+.. No caso de armazenamentos de dados vVols , a ação de exclusão de armazenamento de dados exclui o armazenamento de dados somente quando não há vVols associados a ele.  A caixa de diálogo Excluir armazenamento de dados fornece uma opção para excluir volumes do cluster ONTAP .
+.. No caso de sistemas ASA r2 baseados em datastores vVols , a caixa de seleção para excluir os volumes de suporte não é aplicável.
+
+
+. Para excluir os volumes de suporte no armazenamento ONTAP , selecione *Excluir volumes no cluster ONTAP *.
++
+
+NOTE: Não é possível excluir o volume no cluster ONTAP de um armazenamento de dados VMFS que faz parte do cluster de host protegido.
+
+

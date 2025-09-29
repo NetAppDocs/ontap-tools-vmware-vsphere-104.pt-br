@@ -1,0 +1,183 @@
+---
+permalink: configure/create-datastore.html 
+sidebar: sidebar 
+keywords:  
+summary: Quando você cria um armazenamento de dados no nível do cluster do host, o armazenamento de dados é criado e montado em todos os hosts do destino, e a ação é habilitada somente se o usuário atual tiver o privilégio de execução. 
+---
+= Criar um armazenamento de dados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando você cria um armazenamento de dados no nível do cluster do host, o armazenamento de dados é criado e montado em todos os hosts do destino, e a ação é habilitada somente se o usuário atual tiver o privilégio de execução.
+
+*Interoperabilidade entre datastores nativos com vCenter Server e datastores gerenciados por ferramentas ONTAP *
+
+As ONTAP tools for VMware vSphere 10 criam igroups aninhados para datastores, com igroups pais específicos para datastores e igroups filhos mapeados para os hosts.  Você pode criar igroups simples a partir do gerenciador de sistemas ONTAP e usá-los para criar armazenamentos de dados VMFS sem usar ferramentas ONTAP . Consulte https://docs.netapp.com/us-en/ontap/san-admin/manage-san-initiators-task.html["Gerenciar iniciadores SAN e igroups"] para maiores informações.
+
+Quando o armazenamento é integrado às ferramentas ONTAP e a descoberta do armazenamento de dados é executada, os igroups simples e os armazenamentos de dados VMFS se tornam gerenciados pelas ferramentas ONTAP e são convertidos em igroups aninhados.  Não é possível usar os igroups simples anteriores para criar novos armazenamentos de dados; você deve usar a interface de usuário das ferramentas ONTAP ou a API REST para reutilizar os igroups aninhados.
+
+[role="tabbed-block"]
+====
+.Criar um armazenamento de dados vVols
+--
+Começando com as ONTAP tools for VMware vSphere 10.3, você pode criar um armazenamento de dados vVols em sistemas ASA r2 com eficiência de espaço como thin.vVol. O provedor VASA cria um contêiner e os pontos de extremidade de protocolo desejados ao criar o armazenamento de dados vVol. Este contêiner não terá nenhum volume de apoio.
+
+.Antes de começar
+* Certifique-se de que os agregados raiz não sejam mapeados para SVM.
+* Certifique-se de que o Provedor VASA esteja registrado no vCenter selecionado.
+* No sistema de armazenamento ASA r2, o SVM deve ser mapeado para agregar para o usuário do SVM.
+
+
+.Passos
+. Efetue login no cliente vSphere.
+. Clique com o botão direito do mouse em um sistema host, cluster de host ou data center e selecione * Ferramentas NetApp ONTAP * > *Criar armazenamento de dados*.
+. Selecione vVols *Tipo de armazenamento de dados*.
+. Insira o *Nome do armazenamento de dados* e as informações do *Protocolo*.
++
+
+NOTE: O sistema ASA r2 suporta os protocolos iSCSI e FC para vVols.
+
+. Selecione a VM de armazenamento onde você deseja criar o armazenamento de dados.
+. Em opções avançadas:
++
+** Se você selecionar a *Política de exportação personalizada*, certifique-se de executar a descoberta no vCenter para todos os objetos. É recomendável que você não use esta opção.
+** Você pode selecionar o nome do *Grupo de iniciadores personalizados* para os protocolos iSCSI e FC.
++
+
+NOTE: No sistema de armazenamento ASA r2 tipo SVM, as unidades de armazenamento (LUN/namespace) não são criadas porque o armazenamento de dados é apenas um contêiner lógico.
+
+
+
+. No painel *Atributos de armazenamento*, você pode criar novos volumes ou usar os volumes existentes.  No entanto, você não pode combinar esses dois tipos de volumes para criar um armazenamento de dados vVols .
++
+Ao criar um novo volume, você pode habilitar o QoS no armazenamento de dados. Por padrão, um volume é criado para cada solicitação criada por LUN. Esta etapa não é aplicável para datastores vVols que usam os sistemas de armazenamento ASA r2.
+
+. Revise sua seleção no painel *Resumo* e selecione *Concluir*.
+
+
+--
+.Criar um armazenamento de dados NFS
+--
+Um armazenamento de dados VMware Network File System (NFS) usa o protocolo NFS para conectar hosts ESXi a um dispositivo de armazenamento compartilhado em uma rede.  Os armazenamentos de dados NFS são comumente usados em ambientes VMware vSphere e oferecem diversas vantagens, como simplicidade e flexibilidade.
+
+.Passos
+. Efetue login no cliente vSphere.
+. Clique com o botão direito do mouse em um sistema host, cluster de host ou data center e selecione * Ferramentas NetApp ONTAP * > *Criar armazenamento de dados*.
+. Selecione NFS no campo *Tipo de armazenamento de dados*.
+. Insira o nome, o tamanho e as informações do protocolo do armazenamento de dados no painel *Nome e protocolo*.  Selecione *Cluster de armazenamento de dados* e *Autenticação Kerberos* nas opções avançadas.
++
+
+NOTE: A autenticação Kerberos está disponível somente quando o protocolo NFS 4.1 é selecionado.
+
+. Selecione *Plataforma* e *VM de armazenamento* no painel *Armazenamento*.
+. Se você selecionar *Política de exportação personalizada* nas opções avançadas, execute a descoberta no vCenter para todos os objetos. É recomendável que você não use esta opção.
++
+
+NOTE: Não é possível criar um armazenamento de dados NFS usando a política de volume raiz/padrão do SVM.
+
++
+** Nas opções avançadas, o botão de alternância *Assimétrico* fica visível somente se desempenho ou capacidade for selecionado no menu suspenso da plataforma.
+** Ao escolher a opção *Qualquer* no menu suspenso da plataforma, você pode ver as SVMs que fazem parte do vCenter, independentemente da plataforma ou do sinalizador assimétrico.
+
+
+. Selecione o agregado para criação de volume no painel *Atributos de armazenamento*.  Nas opções avançadas, escolha *Reserva de Espaço* e *Ativar QoS* conforme necessário.
+. Revise as seleções no painel *Resumo* e selecione *Concluir*.
+
+
+O armazenamento de dados NFS é criado e montado em todos os hosts.
+
+--
+.Criar um armazenamento de dados VMFS
+--
+O Virtual Machine File System (VMFS) é um sistema de arquivos em cluster que armazena arquivos de máquinas virtuais em ambientes VMware vSphere.  O VMFS permite que vários hosts ESXi acessem os mesmos arquivos da máquina virtual simultaneamente, habilitando recursos como vMotion e Alta Disponibilidade.
+
+Em um cluster protegido:
+
+* Você pode criar somente datastores VMFS.  Quando você adiciona um armazenamento de dados VMFS a um cluster protegido, o armazenamento de dados fica protegido automaticamente.
+* Não é possível criar um armazenamento de dados em um data center com um ou mais clusters de hosts protegidos.
+* Não é possível criar um armazenamento de dados no host ESXi se o cluster do host pai estiver protegido com um relacionamento do tipo "Política de Failover Duplex Automatizado" (configuração uniforme/não uniforme).
+* Você pode criar um armazenamento de dados VMFS somente em um host ESXi protegido por um relacionamento assíncrono.  Não é possível criar e montar um armazenamento de dados em um host ESXi que faça parte de um cluster de host protegido pela política "Automated Failover Duplex".
+
+
+.Antes de começar
+* Habilite serviços e LIFs para cada protocolo no lado de armazenamento ONTAP .
+* Mapear SVM para agregar para usuário SVM no sistema de armazenamento ASA r2.
+* Configure o host ESXi se estiver usando o protocolo NVMe/TCP:
++
+.. Revise o https://www.vmware.com/resources/compatibility/detail.php?deviceCategory=san&productid=49677&releases_filter=589,578,518,508,448&deviceCategory=san&details=1&partner=399&Protocols=1&transportTypes=3&isSVA=0&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc["Guia de compatibilidade do VMware"]
++
+
+NOTE: O VMware vSphere 7.0 U3 e versões posteriores oferecem suporte ao protocolo NVMe/TCP.  No entanto, o VMware vSphere 8.0 e versões posteriores são recomendados.
+
+.. Valide se o fornecedor da placa de interface de rede (NIC) oferece suporte à NIC ESXi com o protocolo NVMe/TCP.
+.. Configure a placa de rede ESXi para NVMe/TCP de acordo com as especificações do fornecedor da placa de rede.
+.. Ao usar a versão VMware vSphere 7, siga as instruções no site da VMware https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/configure-adapters-for-nvme-over-tcp-storage/configure-vmkernel-binding-for-the-tcp-adapter.html["Configurar a vinculação do VMkernel para o adaptador NVMe sobre TCP"] para configurar a vinculação de porta NVMe/TCP.  Ao usar a versão VMware vSphere 8, siga https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-tcp-on-esxi.html["Configurando NVMe sobre TCP no ESXi"] , para configurar a ligação da porta NVMe/TCP.
+.. Para a versão VMware vSphere 7, siga as instruções na página https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["Habilitar adaptadores de software NVMe sobre RDMA ou NVMe sobre TCP"] para configurar adaptadores de software NVMe/TCP.  Para o lançamento do VMware vSphere 8, siga https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-rdma-roce-v2-on-esxi/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["Adicionar software NVMe sobre adaptadores RDMA ou NVMe sobre TCP"] para configurar os adaptadores de software NVMe/TCP.
+.. Correrlink:../configure/discover-storage-systems-and-hosts.html["Descubra sistemas de armazenamento e hosts"] ação no host ESXi. Para obter mais informações, consulte  https://community.netapp.com/t5/Tech-ONTAP-Blogs/How-to-Configure-NVMe-TCP-with-vSphere-8-0-Update-1-and-ONTAP-9-13-1-for-VMFS/ba-p/445429["Como configurar NVMe/TCP com vSphere 8.0 Update 1 e ONTAP 9.13.1 para datastores VMFS"] .
+
+
+* Se você estiver usando o protocolo NVME/FC, execute as seguintes etapas para configurar o host ESXi:
++
+.. Se ainda não estiver habilitado, habilite o NVMe sobre Fabrics (NVMe-oF) em seu(s) host(s) ESXi.
+.. Zoneamento SCSI completo.
+.. Certifique-se de que os hosts ESXi e o sistema ONTAP estejam conectados em uma camada física e lógica.
+
+
+
+
+Para configurar um ONTAP SVM para o protocolo FC, consulte https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-fc-task.html["Configurar um SVM para FC"] .
+
+Para obter mais informações sobre o uso do protocolo NVMe/FC com o VMware vSphere 8.0, consulte https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["Configuração de host NVMe-oF para ESXi 8.x com ONTAP"] .
+
+Para obter mais informações sobre o uso de NVMe/FC com VMware vSphere 7.0, consulte https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["Guia de configuração do host ONTAP NVMe/FC"] e http://www.netapp.com/us/media/tr-4684.pdf["TR-4684"] .
+
+.Passos
+. Efetue login no cliente vSphere.
+. Clique com o botão direito do mouse em um sistema host, cluster de host ou data center e selecione * Ferramentas NetApp ONTAP * > *Criar armazenamento de dados*.
+. Selecione o tipo de armazenamento de dados VMFS.
+. Insira o nome, o tamanho e as informações de protocolo do armazenamento de dados no painel *Nome e Protocolo*. Se você optar por adicionar o novo armazenamento de dados a um cluster de armazenamento de dados VMFS existente, selecione o seletor de cluster de armazenamento de dados em Opções avançadas.
+. Selecione a VM de armazenamento no painel *Armazenamento*.  Forneça o *Nome do grupo iniciador personalizado* na seção *Opções avançadas*, conforme necessário.  Você pode escolher um igroup existente para o armazenamento de dados ou criar um novo igroup com um nome personalizado.
++
+Quando o protocolo NVMe/FC ou NVMe/TCP é selecionado, um novo subsistema de namespace é criado e usado para mapeamento de namespace. O subsistema de namespace é criado usando o nome gerado automaticamente que inclui o nome do armazenamento de dados. Você pode renomear o subsistema de namespace no campo *nome do subsistema de namespace personalizado* nas opções avançadas do painel *Armazenamento*.
+
+. No painel *atributos de armazenamento*:
++
+.. Selecione *Agregar* nas opções suspensas.
++
+
+NOTE: Para sistemas de armazenamento ASA r2, a opção *Agregar* não é exibida porque o armazenamento ASA r2 é desagregado. Ao escolher um sistema de armazenamento ASA r2 do tipo SVM, a página de atributos de armazenamento mostra as opções para habilitar a QoS.
+
+.. De acordo com o protocolo selecionado, uma unidade de armazenamento (LUN/Namespace) é criada com uma reserva de espaço do tipo thin.
++
+
+NOTE: A partir do ONTAP 9.16.1, os sistemas de armazenamento ASA r2 suportam até 12 nós por cluster.
+
+.. Selecione o *Nível de serviço de desempenho* para sistemas de armazenamento ASA r2 com SVM de 12 nós que é um cluster heterogêneo.  Esta opção não estará disponível se o SVM selecionado for um cluster homogêneo ou usar um usuário SVM.
++
+'Qualquer' é o valor padrão do nível de serviço de desempenho (PSL).  Esta configuração cria a unidade de armazenamento usando o algoritmo de posicionamento balanceado ONTAP .  No entanto, você pode selecionar a opção de desempenho ou extrema, conforme necessário.
+
+.. Selecione *Usar volume existente*, *Ativar opções de QoS* conforme necessário e forneça os detalhes.
++
+
+NOTE: No tipo de armazenamento ASA r2, a criação ou seleção de volume não se aplica à criação de unidade de armazenamento (LUN/Namespace).  Portanto, essas opções não são mostradas.
+
++
+
+NOTE: Não é possível usar o volume existente para criar um armazenamento de dados VMFS com protocolo NVMe/FC ou NVMe/TCP; você deve criar um novo volume.
+
+
+
+. Revise os detalhes do armazenamento de dados no painel *Resumo* e selecione *Concluir*.
+
+
+
+NOTE: Se você criar o armazenamento de dados em um cluster protegido, poderá ver uma mensagem somente leitura: "O armazenamento de dados está sendo montado em um cluster protegido".
+
+.Resultado
+O armazenamento de dados VMFS é criado e montado em todos os hosts.
+
+--
+====

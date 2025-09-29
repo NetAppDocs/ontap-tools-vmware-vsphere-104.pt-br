@@ -1,0 +1,60 @@
+---
+permalink: configure/add-storage-backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Os backends de armazenamento são sistemas que os hosts ESXi usam para armazenamento de dados. 
+---
+= Adicionar um backend de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Adicionar um backend de armazenamento permite que você integre um cluster ONTAP .
+
+*Sobre esta tarefa*
+
+No caso de configurações de multilocação em que o vCenter atua como locatário com um SVM associado, use o Gerenciador de ferramentas ONTAP para adicionar o cluster.  Associe o backend de armazenamento ao vCenter Server para mapeá-lo globalmente à instância integrada do vCenter Server.  O locatário do vCenter deve integrar as Máquinas Virtuais de Armazenamento (SVMs) desejadas.  Isso permite que um usuário SVM provisione armazenamentos de dados vVols .  Você pode adicionar armazenamento no vCenter usando o SVM.
+
+Adicione os backends de armazenamento local com credenciais de cluster ou SVM usando a interface de usuário das ferramentas ONTAP .  Esses backends de armazenamento são limitados a um único vCenter.  Ao usar credenciais de cluster localmente, as SVMs associadas são mapeadas automaticamente para o vCenter para gerenciar vVols ou VMFS.  Para gerenciamento de VMFS, incluindo SRA, as ferramentas ONTAP oferecem suporte a credenciais SVM sem a necessidade de um cluster global.
+
+[role="tabbed-block"]
+====
+.Usando o Gerenciador de ferramentas ONTAP
+--
+
+NOTE: Em uma configuração multilocatário, você pode adicionar um cluster de backend de armazenamento globalmente e um SVM localmente para usar credenciais de usuário do SVM.
+
+.Passos
+. Inicie o ONTAP Tools Manager em um navegador da web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Efetue login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+. Selecione *Backends de armazenamento* na barra lateral.
+. Adicione o backend de armazenamento e forneça o endereço IP ou FQDN do servidor, nome de usuário e detalhes de senha.
++
+
+NOTE: LIFs de gerenciamento de endereços IPv4 e IPv6 são suportados.
+
+
+
+--
+.Usando a interface de usuário do cliente vSphere
+--
+
+NOTE: Ao configurar um backend de armazenamento por meio da interface de usuário do cliente vSphere, é importante observar que os datastores vVols não oferecem suporte à adição direta de um usuário SVM.
+
+. Efetue login no cliente vSphere.
+. Na página de atalhos, selecione * Ferramentas NetApp ONTAP * na seção de plug-ins.
+. Selecione *Backends de armazenamento* na barra lateral.
+. Adicione o backend de armazenamento e forneça o endereço IP do servidor, nome de usuário, senha e detalhes da porta.
++
+
+NOTE: Para adicionar um usuário SVM diretamente, você pode adicionar credenciais baseadas em cluster e LIFs de gerenciamento de endereços IPv4 e IPv6 ou fornecer credenciais baseadas em SVM com um LIF de gerenciamento SVM.
+
+
+
+.O que vem a seguir?
+A lista é atualizada e você pode ver o backend de armazenamento recém-adicionado na lista.
+
+--
+====

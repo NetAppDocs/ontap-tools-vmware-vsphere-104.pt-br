@@ -1,0 +1,94 @@
+---
+permalink: concepts/rbac-vcenter-use.html 
+sidebar: sidebar 
+keywords: vcenter, vcenter server, vcenter server rbac, use rbac 
+summary: Há vários aspectos das ONTAP tools for VMware vSphere 10 RBAC com o vCenter Server que você deve considerar antes de usá-lo em um ambiente de produção. 
+---
+= Use o vCenter Server RBAC com ONTAP tools for VMware vSphere 10
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Há vários aspectos das ONTAP tools for VMware vSphere 10 RBAC com o vCenter Server que você deve considerar antes de usá-lo em um ambiente de produção.
+
+
+
+== Funções do vCenter e a conta de administrador
+
+Você só precisa definir e usar as funções personalizadas do vCenter Server se quiser limitar o acesso aos objetos do vSphere e às tarefas administrativas associadas.  Se não for necessário limitar o acesso, você pode usar uma conta de administrador.  Cada conta de administrador é definida com a função Administrador no nível superior da hierarquia de objetos.  Isso fornece acesso total aos objetos do vSphere, incluindo aqueles adicionados pelas ONTAP tools for VMware vSphere 10.
+
+
+
+== Hierarquia de objetos do vSphere
+
+O inventário de objetos do vSphere é organizado em uma hierarquia.  Por exemplo, você pode descer na hierarquia da seguinte maneira:
+
+`vCenter Server`--> `Datacenter` --> `Cluster` --> `ESXi host` --> `Virtual Machine`
+
+Todas as permissões são validadas na hierarquia de objetos do vSphere, exceto as operações do plug-in VAAI, que são validadas no host ESXi de destino.
+
+
+
+== Funções incluídas com ONTAP tools for VMware vSphere 10
+
+Para simplificar o trabalho com o vCenter Server RBAC, as ONTAP tools for VMware vSphere fornecem funções predefinidas adaptadas a diversas tarefas de administração.
+
+
+NOTE: Você pode criar novas funções personalizadas, se necessário.  Nesse caso, você deve clonar uma das funções de ferramentas ONTAP existentes e editá-la conforme necessário.  Após fazer as alterações de configuração, os usuários do cliente vSphere afetados precisam efetuar logout e login novamente para ativar as alterações.
+
+Para visualizar as ONTAP tools for VMware vSphere , selecione *Menu* na parte superior do vSphere Client e clique em *Administração* e depois em *Funções* à esquerda.  Há três funções predefinidas, conforme descrito abaixo.
+
+.Ferramentas NetApp ONTAP tools for VMware vSphere Administrator
+Fornece todos os privilégios nativos do vCenter Server e privilégios específicos das ferramentas ONTAP necessários para executar as principais ONTAP tools for VMware vSphere .
+
+.ONTAP tools for VMware vSphere NetApp ONTAP para VMware vSphere somente leitura
+Fornece acesso somente leitura às ferramentas ONTAP .  Esses usuários não podem executar nenhuma ONTAP tools for VMware vSphere que sejam controladas por acesso.
+
+.ONTAP tools for VMware vSphere NetApp ONTAP para VMware vSphere Provision
+Fornece alguns dos privilégios nativos do vCenter Server e privilégios específicos das ferramentas ONTAP necessários para provisionar armazenamento.  Você pode executar as seguintes tarefas:
+
+* Criar novos armazenamentos de dados
+* Gerenciar armazenamentos de dados
+
+
+
+
+== Objetos vSphere e backends de armazenamento ONTAP
+
+Os dois ambientes RBAC funcionam juntos.  Ao executar uma tarefa na interface do cliente vSphere, as funções das ferramentas ONTAP definidas para o vCenter Server são verificadas primeiro.  Se a operação for permitida pelo vSphere, os privilégios da função ONTAP serão examinados.  Esta segunda etapa é executada com base na função ONTAP atribuída ao usuário quando o backend de armazenamento foi criado e configurado.
+
+
+
+== Trabalhando com o vCenter Server RBAC
+
+Há algumas coisas a considerar ao trabalhar com os privilégios e permissões do vCenter Server.
+
+
+
+=== Privilégios necessários
+
+Para acessar a interface de usuário das ONTAP tools for VMware vSphere 10, você precisa ter o privilégio _View_ específico das ferramentas ONTAP .  Se você entrar no vSphere sem esse privilégio e clicar no ícone do NetApp , as ONTAP tools for VMware vSphere exibirão uma mensagem de erro e impedirão que você acesse a interface do usuário.
+
+O nível de atribuição na hierarquia de objetos do vSphere determina quais partes da interface do usuário você pode acessar.  Atribuir o privilégio Exibir ao objeto raiz permite que você acesse as ONTAP tools for VMware vSphere clicando no ícone NetApp .
+
+Em vez disso, você pode atribuir o privilégio Exibir a outro nível de objeto vSphere inferior.  No entanto, isso limitará os menus das ONTAP tools for VMware vSphere que você pode acessar e usar.
+
+
+
+=== Atribuindo permissões
+
+Você precisa usar permissões do vCenter Server se quiser limitar o acesso aos objetos e tarefas do vSphere.  O local onde você atribui permissão na hierarquia de objetos do vSphere determina as ONTAP tools for VMware vSphere 10 que os usuários podem executar.
+
+
+TIP: A menos que você precise definir um acesso mais restritivo, geralmente é uma boa prática atribuir permissões no nível do objeto raiz ou da pasta raiz.
+
+As permissões disponíveis com ONTAP tools for VMware vSphere 10 se aplicam a objetos personalizados não vSphere, como sistemas de armazenamento.  Se possível, você deve atribuir essas permissões às ONTAP tools for VMware vSphere, porque não há nenhum objeto vSphere ao qual você possa atribuí-las.  Por exemplo, qualquer permissão que inclua um privilégio "Adicionar/Modificar/Remover sistemas de armazenamento" das ONTAP tools for VMware vSphere deve ser atribuída no nível do objeto raiz.
+
+Ao definir uma permissão em um nível mais alto na hierarquia de objetos, você pode configurar a permissão para que ela seja passada e herdada pelos objetos filho.  Se necessário, você pode atribuir permissões adicionais aos objetos filhos que substituem as permissões herdadas do pai.
+
+Você pode modificar uma permissão a qualquer momento.  Se você alterar qualquer privilégio dentro de uma permissão, os usuários associados à permissão precisarão sair do vSphere e efetuar login novamente para habilitar a alteração.

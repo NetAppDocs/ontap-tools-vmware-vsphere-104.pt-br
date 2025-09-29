@@ -1,0 +1,31 @@
+---
+permalink: manage/delete-deployment.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Após excluir as ONTAP tools for VMware vSphere , você deve limpar os FlexVolumes criados durante a implantação. Se você usou um cluster ONTAP dedicado para implantações, limpe os FlexVolumes, pois a implantação cria muitos FlexVolumes não utilizados, resultando em desempenho reduzido. 
+---
+= Remover volumes FlexVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando você usa um cluster ONTAP dedicado para ferramentas ONTAP para implantação do VMware, ele cria muitos volumes FlexVol não utilizados.  Após remover as ONTAP tools for VMware vSphere, você deve remover os volumes FlexVol para evitar possíveis impactos no desempenho.
+
+.Passos
+. Determine as ONTAP tools for VMware vSphere a partir da primeira VM do nó.
++
+_cat /opt/netapp/meta/ansible_vars.yaml | grep -i protocolo_
+
++
+Se for uma implantação iSCSI, você também precisará excluir os igroups.
+
+. Obtenha a lista de volumes do FlexVol .
++
+_kubectl descreve volumes persistentes | grep nomeInterno | awk -F'=' '{print $2}'_
+
+. Remova as VMs do vCenter Server. Consulte https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-virtual-machine-administration-guide-8-0/managing-virtual-machinesvsphere-vm-admin/adding-and-removing-virtual-machinesvsphere-vm-admin.html#GUID-376174FE-F936-4BE4-B8C2-48EED42F110B-en["Remover e registrar novamente VMs e modelos de VM"] .
+. Excluir volumes FlexVol . Consulte https://docs.netapp.com/us-en/ontap/volumes/delete-flexvol-task.html["Excluir um FlexVol volume"] .  No comando CLI para excluir um volume, forneça o nome exato dos volumes FlexVol .
+. Exclua igroups SAN do sistema de armazenamento ONTAP em caso de implantação iSCSI. Consulte https://docs.netapp.com/us-en/ontap/san-admin/manage-san-initiators-task.html["Visualizar e gerenciar iniciadores SAN e igroups"] .
+

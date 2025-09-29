@@ -1,0 +1,42 @@
+---
+permalink: manage/collect-the-log-files.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode coletar arquivos de log para ONTAP tools for VMware vSphere nas opções disponíveis na interface gráfica do usuário das ONTAP tools for VMware vSphere \(GUI\).  O suporte técnico pode solicitar que você colete os arquivos de log para ajudar a solucionar um problema.' 
+---
+= Coletar os arquivos de log
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode coletar arquivos de log para ONTAP tools for VMware vSphere nas opções disponíveis na interface de usuário do Gerenciador de ferramentas ONTAP .  O suporte técnico pode solicitar que você colete os arquivos de log para ajudar a solucionar um problema.
+
+
+NOTE: A geração de logs do Gerenciador de ferramentas ONTAP inclui todos os logs de todas as instâncias do vCenter Server.  A geração de logs da interface de usuário do cliente vCenter tem como escopo o vCenter Server selecionado.
+
+.Passos
+. Inicie o ONTAP Tools Manager em um navegador da web: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Efetue login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+. Selecione *Pacotes de Log* na barra lateral.
++
+Esta operação pode levar vários minutos.
+
+. Selecione *Gerar* para gerar os arquivos de log.
+. Insira o rótulo do pacote de log e selecione *Gerar*.
++
+Baixe o arquivo tar.gz e envie-o para o suporte técnico.
+
+
+
+Siga as etapas abaixo para gerar o pacote de log usando a interface de usuário do cliente vCenter:
+
+.Passos
+. Efetue login no cliente vSphere.
+. Na página inicial do vSphere Client, acesse *Suporte* > *Pacote de logs* > *Gerar*.
+. Forneça o rótulo do pacote de log e gere o pacote de log. Você verá a opção de download quando os arquivos forem gerados. O download pode levar algum tempo.
+
+
+
+NOTE: O pacote de logs gerado substitui o pacote de logs gerado nos últimos 3 dias ou 72 horas.

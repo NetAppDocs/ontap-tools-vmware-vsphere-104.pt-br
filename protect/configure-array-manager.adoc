@@ -1,0 +1,62 @@
+---
+permalink: protect/configure-array-manager.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode configurar o Adaptador de Replicação de Armazenamento (SRA) usando o assistente do Array Manager do VMware Live Site Recovery para habilitar interações entre o VMware Live Site Recovery e as máquinas virtuais de armazenamento (SVMs).' 
+---
+= Configurar SRA usando o gerenciador de matriz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar o Adaptador de Replicação de Armazenamento (SRA) usando o assistente do Array Manager do VMware Live Site Recovery para permitir interações entre o VMware Live Site Recovery e as máquinas virtuais de armazenamento (SVMs).
+
+.Antes de começar
+* Você deve ter pareado os sites protegidos e os sites de recuperação no VMware Live Site Recovery.
+* Você deve ter configurado seu armazenamento integrado antes de configurar o gerenciador de matriz.
+* Você deve ter configurado e replicado os relacionamentos do SnapMirror entre os sites protegidos e os sites de recuperação.
+* Você deve ter habilitado os LIFs de gerenciamento do SVM para habilitar a multilocação.
+
+
+O SRA oferece suporte ao gerenciamento em nível de cluster e ao gerenciamento em nível de SVM.  Se você adicionar armazenamento em nível de cluster, poderá descobrir e executar operações em todas as SVMs do cluster.  Se você adicionar armazenamento em nível de SVM, poderá gerenciar somente esse SVM específico.
+
+.Passos
+. No VMware Live Site Recovery, selecione *Gerenciadores de Array* > *Adicionar Gerenciador de Array*.
+. Insira as seguintes informações para descrever o array no VMware Live Site Recovery:
++
+.. Digite um nome para identificar o gerenciador de matriz no campo *Nome de exibição*.
+.. No campo *Tipo de SRA*, selecione * NetApp Storage Replication Adapter for ONTAP*.
+.. Insira as informações para conectar ao cluster ou ao SVM:
++
+*** Se estiver se conectando a um cluster, você deverá inserir o LIF de gerenciamento do cluster.
+*** Se você estiver se conectando diretamente a um SVM, deverá inserir o endereço IP do LIF de gerenciamento do SVM.
++
+
+NOTE: Ao configurar o gerenciador de matriz, você deve usar a mesma conexão (endereço IP) para o sistema de armazenamento que foi usada para integrar o sistema de armazenamento nas ONTAP tools for VMware vSphere.  Por exemplo, se a configuração do gerenciador de matriz tiver escopo SVM, o armazenamento nas ONTAP tools for VMware vSphere deverá ser adicionado no nível SVM.
+
+
+
+.. Se estiver se conectando a um cluster, especifique o nome da SVM no campo *Nome da SVM* ou deixe-o em branco para gerenciar todas as SVMs no cluster.
+.. Insira os volumes a serem descobertos no campo *Lista de inclusão de volumes*.
++
+Você pode inserir o volume de origem no site protegido e o volume de destino replicado no site de recuperação.
+
++
+Por exemplo, se você quiser descobrir o volume src_vol1 que está em um relacionamento SnapMirror com o volume dst_vol1, você deve especificar src_vol1 no campo de site protegido e dst_vol1 no campo de site de recuperação.
+
+.. *(Opcional)* Insira os volumes a serem excluídos da descoberta no campo *Lista de exclusão de volumes*.
++
+Você pode inserir o volume de origem no site protegido e o volume de destino replicado no site de recuperação.
+
++
+Por exemplo, se você quiser excluir o volume _src_vol1_ que está em um relacionamento SnapMirror com o volume _dst_vol1_, você deve especificar _src_vol1_ no campo de site protegido e _dst_vol1_ no campo de site de recuperação.
+
+
+
+. Selecione *Avançar*.
+. Verifique se o array foi descoberto e exibido na parte inferior da janela Adicionar Gerenciador de Array e selecione *Concluir*.
+
+
+Você pode seguir as mesmas etapas para o site de recuperação usando os endereços IP e credenciais de gerenciamento de SVM apropriados.  Na tela Habilitar pares de matrizes do assistente Adicionar gerenciador de matrizes, você deve verificar se o par de matrizes correto está selecionado e se ele aparece como pronto para ser habilitado.

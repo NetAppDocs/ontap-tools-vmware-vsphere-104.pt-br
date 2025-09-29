@@ -1,0 +1,53 @@
+---
+permalink: configure/install-nfs-vaai-plug-in.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você pode instalar o NetApp NFS Plug-in para VMware vStorage APIs para integração de array (VAAI) usando ONTAP tools for VMware vSphere.' 
+---
+= Instalar o plug-in NFS VAAI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O plug-in NFS vStorage API for Array Integration (NFS VAAI) é um componente de software que integra VMware vSphere e arrays de armazenamento NFS.  Instale o plug-in NFS VAAI usando ONTAP tools for VMware vSphere para aproveitar os recursos avançados do seu conjunto de armazenamento NFS para descarregar determinadas operações relacionadas ao armazenamento dos hosts ESXi para o próprio conjunto de armazenamento.
+
+.Antes de começar
+* Baixe o https://mysupport.netapp.com/site/products/all/details/nfsplugin-vmware-vaai/downloads-tab["Plug-in NetApp NFS para VMware VAAI"] pacote de instalação.
+* Certifique-se de ter o host ESXi e o patch mais recente do vSphere 7.0U3 ou versões posteriores e o ONTAP 9.14.1 ou versões posteriores.
+* Monte um armazenamento de dados NFS.
+
+
+.Passos
+. Efetue login no cliente vSphere.
+. Selecione *Atalhos* > *Ferramentas NetApp ONTAP * na seção de plug-ins.
+. Selecione *Configurações* > *Ferramentas NFS VAAI*.
+. Quando o plug-in VAAI for carregado no vCenter Server, selecione *Alterar* na seção *Versão existente*.  Se um plug-in VAAI não for carregado no vCenter Server, selecione o botão *Upload*.
+. Navegue e selecione o `.vib` arquivo e selecione *Upload* para enviar o arquivo para as ferramentas ONTAP .
+. Selecione *Instalar no host ESXI*, selecione o host ESXi no qual você deseja instalar o plug-in NFS VAAI e, em seguida, selecione *Instalar*.
++
+Somente os hosts ESXi qualificados para a instalação do plug-in são exibidos.  Você pode monitorar o progresso da instalação na seção de tarefas recentes do vSphere Web Client.
+
+. Reinicie o host ESXi manualmente após a instalação.
++
+Quando o administrador do VMware reinicia o host ESXi, as ONTAP tools for VMware vSphere detectam e ativam automaticamente o plug-in NFS VAAI.
+
+
+
+.O que vem a seguir?
+Depois de instalar o plug-in NFS VAAI e reinicializar seu host ESXi, você precisa configurar as políticas de exportação NFS corretas para o descarregamento de cópias VAAI.  Ao configurar o VAAI em um ambiente NFS, configure as regras de política de exportação com os seguintes requisitos em mente:
+
+* O volume ONTAP relevante precisa permitir chamadas NFSv4.
+* O usuário root deve permanecer como root e o NFSv4 deve ser permitido em todos os volumes pais de junção.
+* A opção de suporte VAAI precisa ser definida no servidor NFS relevante.
+
+
+Para mais informações sobre o procedimento, consulte https://kb.netapp.com/on-prem/ontap/DM/VAAI/VAAI-KBs/Configure_the_correct_NFS_export_policies_for_VAAI_copy_offload["Configurar as políticas de exportação NFS corretas para descarregamento de cópias VAAI"] Artigo da KB.
+
+.Informações relacionadas
+https://docs.netapp.com/us-en/ontap/nfs-admin/support-vmware-vstorage-over-nfs-concept.html["Suporte para VMware vStorage sobre NFS"]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/enable-disable-nfsv40-task.html["Habilitar ou desabilitar o NFSv4.0"]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/ontap-support-nfsv42-concept.html#nfs-v4-2-security-labels["Suporte ONTAP para NFSv4.2"]

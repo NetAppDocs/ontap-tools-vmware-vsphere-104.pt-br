@@ -1,0 +1,76 @@
+---
+permalink: manage/maintenance-console.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode gerenciar suas configurações de aplicativo, sistema e rede usando o console de manutenção das ferramentas ONTAP .  Você pode alterar sua senha de administrador e senha de manutenção.  Você também pode gerar pacotes de suporte, definir diferentes níveis de log, visualizar e gerenciar configurações de TLS e iniciar diagnósticos remotos. 
+---
+= Visão geral das ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode gerenciar suas configurações de aplicativo, sistema e rede usando o console de manutenção das ferramentas ONTAP .  Você pode alterar sua senha de administrador e senha de manutenção.  Você também pode gerar pacotes de suporte, definir diferentes níveis de log, visualizar e gerenciar configurações de TLS e iniciar diagnósticos remotos.
+
+Você deve ter as ferramentas VMware instaladas após implantar as ONTAP tools for VMware vSphere para acessar o console de manutenção.  Você deve usar `maint` como o nome de usuário e a senha que você configurou durante a implantação para efetuar login no console de manutenção das ferramentas ONTAP .  Você deve usar *nano* para editar os arquivos no console de manutenção ou login root.
+
+
+NOTE: Você deve definir uma senha para o `diag` usuário ao habilitar o diagnóstico remoto.
+
+Você deve usar a guia *Resumo* das ONTAP tools for VMware vSphere para acessar o console de manutenção.  Quando você selecionaimage:../media/launch-maintenance-console.gif["Botão de reprodução"] , o console de manutenção é iniciado.
+
+|===
+
+
+| *Menu do console* | *Opções* 
+
+
+ a| 
+Configuração do aplicativo
+ a| 
+. Exibir resumo do status do servidor
+. Alterar nível de LOG para serviços de provedor VASA e serviços SRA
+
+
+
+
+ a| 
+Configuração do sistema
+ a| 
+. Reinicializar máquina virtual
+. Desligar máquina virtual
+. Alterar senha do usuário 'maint'
+. Alterar fuso horário
+. Aumentar o tamanho do disco de prisão (/jail)
+. Atualizar
+. Instalar o VMware Tools
+
+
+
+
+ a| 
+Configuração de rede
+ a| 
+. Exibir configurações de endereço IP
+. Exibir configurações de pesquisa de nome de domínio
+. Alterar configurações de pesquisa de nome de domínio
+. Exibir rotas estáticas
+. Alterar rotas estáticas
+. Confirmar alterações
+. Faça ping em um host
+. Restaurar configurações padrão
+
+
+
+
+ a| 
+Suporte e Diagnóstico
+ a| 
+. Acessar shell de diagnóstico
+. Habilitar acesso de diagnóstico remoto
+. Forneça credenciais do vCenter para backup
+. Fazer backup
+
+
+|===

@@ -1,0 +1,28 @@
+---
+permalink: manage/migrate-standard-virtual-machines-to-vvols-datastores.html 
+sidebar: sidebar 
+keywords: Migrate NFS and VMFS virtual machines 
+summary: 'Você pode migrar máquinas virtuais de datastores NFS e VMFS para datastores de Volumes Virtuais \(vVols\) para aproveitar o gerenciamento de VM baseado em políticas e outros recursos do vVols . Os datastores vVols permitem que você atenda aos maiores requisitos de carga de trabalho.' 
+---
+= Migrar máquinas virtuais com datastores NFS e VMFS para datastores vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode migrar máquinas virtuais de datastores NFS e VMFS para datastores de Volumes Virtuais (vVols) para aproveitar o gerenciamento de VM baseado em políticas e outros recursos do vVols . Os datastores vVols permitem que você atenda aos maiores requisitos de carga de trabalho.
+
+.Antes de começar
+Certifique-se de que o VASA Provider não esteja em execução em nenhuma das máquinas virtuais que você planeja migrar.  Se você migrar uma máquina virtual que esteja executando o VASA Provider para um armazenamento de dados vVols , não poderá executar nenhuma operação de gerenciamento, incluindo ligar as máquinas virtuais que estão nos armazenamentos de dados vVols .
+
+*Sobre esta tarefa*
+
+Ao migrar de um armazenamento de dados NFS e VMFS para um armazenamento de dados vVols , o vCenter Server usa APIs do vStorage para descarregamentos de integração de matriz (VAAI) ao mover dados de armazenamentos de dados VMFS, mas não de um arquivo NFS VMDK.  Os descarregamentos do VAAI normalmente reduzem a carga no host.
+
+.Passos
+. Clique com o botão direito do mouse na máquina virtual que você deseja migrar e selecione *Migrar*.
+. Selecione *Alterar somente armazenamento* e depois selecione *Avançar*.
+. Selecione um formato de disco virtual, uma Política de Armazenamento de VM e um armazenamento de dados vVol que corresponda aos recursos do armazenamento de dados que você está migrando.
+. Revise as configurações e selecione *Concluir*.
+

@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: automation/learn-rest-api.html 
+keywords: ontap tools vmware vsphere rest api 
+summary: ONTAP tools for VMware vSphere 10 são um conjunto de ferramentas para gerenciamento do ciclo de vida de máquinas virtuais.  Inclui uma API REST robusta que você pode usar como parte dos seus processos de automação. 
+---
+= Saiba mais sobre as ONTAP tools for VMware vSphere 10 REST API
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP tools for VMware vSphere 10 são um conjunto de ferramentas para gerenciamento do ciclo de vida de máquinas virtuais.  Inclui uma API REST robusta que você pode usar como parte dos seus processos de automação.
+
+
+
+== Fundação de serviços web REST
+
+Representational State Transfer (REST) é um estilo para criar aplicativos web distribuídos, incluindo o design de APIs de serviços web.  Ele estabelece um conjunto de tecnologias para expor recursos baseados em servidor e gerenciar seus estados.
+
+.Recursos e representação estatal
+Os recursos são os componentes fundamentais de um aplicativo de serviços web REST.  Há duas tarefas iniciais importantes ao projetar uma API REST:
+
+* Identificar os recursos baseados no sistema ou no servidor
+* Definir os estados dos recursos e as operações de transição de estado associadas
+
+
+Os aplicativos clientes podem exibir e alterar os estados dos recursos por meio de fluxos de mensagens bem definidos.
+
+.Mensagens HTTP
+O Protocolo de Transferência de Hipertexto (HTTP) é o protocolo usado pelo cliente e servidor de serviços web para trocar mensagens sobre os recursos.  Ele segue o modelo CRUD baseado nas operações genéricas de criação, leitura, atualização e exclusão.  O protocolo HTTP inclui cabeçalhos de solicitação e resposta, bem como códigos de status de resposta.
+
+.Formatação de dados JSON
+Embora existam vários formatos de mensagem disponíveis, a opção mais popular é o JavaScript Object Notation (JSON).  JSON é um padrão do setor para representar estruturas de dados simples em texto simples e é usado para transferir informações de estado que descrevem os recursos e as ações desejadas.
+
+.Segurança
+A segurança é um aspecto importante de uma API REST.  Além do protocolo Transport Layer Security (TLS) usado para proteger o tráfego HTTP na rede, as ONTAP tools for VMware vSphere 10 REST API também usam tokens de acesso para autenticação.  Você precisa adquirir um token de acesso e usá-lo em chamadas de API subsequentes.
+
+.Suporte para solicitações assíncronas
+As ONTAP tools for VMware vSphere 10 executam a maioria das solicitações de forma síncrona, retornando um código de status quando a operação é concluída.  Ele também oferece suporte ao processamento assíncrono para tarefas que exigem mais tempo para serem concluídas.
+
+
+
+== Ambiente do gerenciador de ferramentas ONTAP
+
+Há vários aspectos do ambiente do Gerenciador de ferramentas ONTAP que você deve considerar.
+
+.Máquina virtual
+As ONTAP tools for VMware vSphere 10 são implantadas usando a arquitetura de plug-in remoto do vSphere. O software, incluindo suporte para a API REST, é executado em uma máquina virtual separada.
+
+.Endereço IP das ferramentas ONTAP
+As ONTAP tools for VMware vSphere 10 expõem um único endereço IP que fornece um gateway para os recursos da máquina virtual.  Você precisa fornecer o endereço durante a configuração inicial e ele será atribuído a um componente interno do balanceador de carga.  O endereço é usado pela interface de usuário do Gerenciador de ferramentas ONTAP , bem como para acessar a página de documentação do Swagger e a API REST diretamente.
+
+.Duas APIs REST
+Além das ONTAP tools for VMware vSphere 10 REST API, o cluster ONTAP tem sua própria REST API.  O Gerenciador de ferramentas ONTAP usa a API REST do ONTAP como cliente para executar tarefas relacionadas ao armazenamento.  É importante ter em mente que essas duas APIs são separadas e distintas. Para obter mais informações, consulte  https://docs.netapp.com/us-en/ontap-automation/["Automação ONTAP"^] .

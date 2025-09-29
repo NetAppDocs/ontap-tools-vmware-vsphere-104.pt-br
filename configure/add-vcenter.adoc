@@ -1,0 +1,36 @@
+---
+permalink: configure/add-vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: Adicione instâncias do vCenter Server às ONTAP tools for VMware vSphere para configurar, gerenciar e proteger seus armazenamentos de dados virtuais no seu ambiente vCenter Server. 
+---
+= Adicionar instâncias do vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Adicione instâncias do vCenter Server às ONTAP tools for VMware vSphere para configurar, gerenciar e proteger seus armazenamentos de dados virtuais no seu ambiente vCenter Server.  Ao adicionar várias instâncias do vCenter Server, certificados CA personalizados são necessários para comunicação segura entre ferramentas ONTAP e cada vCenter Server.
+
+*Sobre esta tarefa*
+
+Ao integrar-se ao vCenter, as ferramentas ONTAP permitem que você execute tarefas de armazenamento como provisionamento, snapshots e proteção de dados diretamente do cliente vSphere, eliminando a necessidade de alternar para consoles de gerenciamento de armazenamento separados.
+
+.Passos
+. Abra um navegador da web e navegue até o URL: `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. Efetue login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+. Selecione *vCenters* > *Adicionar* para integrar as instâncias do vCenter Server.  Forneça seu endereço IP ou nome de host do vCenter, nome de usuário, senha e detalhes da porta.
++
+
+NOTE: Você não precisa de uma conta de administrador para adicionar instâncias do vCenter às ferramentas ONTAP .  Você pode criar uma função personalizada sem a conta de administrador com permissões limitadas. Consultelink:../concepts/rbac-vcenter-use.html["Use o vCenter Server RBAC com ONTAP tools for VMware vSphere 10"] para mais detalhes.
+
+
+
+Adicionar uma instância do vCenter Server às ferramentas ONTAP aciona automaticamente as seguintes ações:
+
+* O plug-in do cliente vCenter é registrado como um plug-in remoto.
+* Privilégios personalizados para plug-ins e APIs são aplicados à instância do vCenter Server.
+* Funções personalizadas são criadas para gerenciar os usuários.
+* O plug-in aparece como um atalho na interface do usuário do vSphere.
+

@@ -1,0 +1,41 @@
+---
+permalink: deploy/ha-workflow.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Começar a usar as ONTAP tools for VMware vSphere inclui algumas etapas. 
+---
+= Fluxo de trabalho de implantação de alta disponibilidade (HA)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se estiver usando datastores vVols , você precisará expandir a implantação inicial das ferramentas ONTAP para uma configuração de alta disponibilidade (HA) e habilitar os serviços do Provedor VASA.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"]Amplie a implantação
+[role="quick-margin-para"]
+Você pode ampliar as ONTAP tools for VMware vSphere para aumentar o número de nós na implantação e alterar a configuração para uma configuração de HA.
+
+[role="quick-margin-list"]
+* link:../manage/edit-appliance-settings.html["Alterar ONTAP tools for VMware vSphere"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"]Habilitar serviços
+[role="quick-margin-para"]
+Para configurar os datastores vVols , você deve habilitar o serviço VASA Provider. Registre o provedor VASA no vCenter e garanta que suas políticas de armazenamento atendam aos requisitos de HA, incluindo configurações adequadas de rede e armazenamento.
+
+[role="quick-margin-para"]
+Habilite os serviços SRA para usar as ferramentas ONTAP Storage Replication Adapter (SRA) para VMware Site Recovery Manager (SRM) ou VMware Live Site Recovery (VLSR).
+
+[role="quick-margin-list"]
+* link:../manage/enable-services.html["Habilitar serviços de provedor VASA e SRA"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"]Atualizar os certificados
+[role="quick-margin-para"]
+Se você estiver usando armazenamentos de dados vVol com várias instâncias do vCenter Server, atualize o certificado autoassinado para um certificado assinado por uma autoridade de certificação (CA).
+
+[role="quick-margin-list"]
+* link:../manage/certificate-manage.html["Gerenciar certificados"]
+

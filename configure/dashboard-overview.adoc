@@ -1,0 +1,46 @@
+---
+permalink: configure/dashboard-overview.html 
+sidebar: sidebar 
+keywords: user roles 
+summary: Quando você seleciona o ícone do plug-in ONTAP tools for VMware vSphere na seção de atalhos no cliente vCenter, a interface do usuário navega para a página de visão geral.  Esta página funciona como um painel que fornece o resumo das ONTAP tools for VMware vSphere . 
+---
+= Visão geral do painel de ONTAP tools for VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando você seleciona o ícone do plug-in ONTAP tools for VMware vSphere na seção de atalhos no cliente vCenter, a interface do usuário navega para a página de visão geral.  Esta página funciona como um painel que fornece o resumo das ONTAP tools for VMware vSphere .
+
+No caso da configuração do Modo Vinculado Aprimorado (ELM), o menu suspenso de seleção do vCenter Server aparece e você pode selecionar um vCenter Server desejado para ver os dados relevantes a ele. Este menu suspenso está disponível para todas as outras visualizações de listagem do plug-in. A seleção do vCenter Server feita em uma página persiste em todas as guias do plug-in.image:../media/remote-plugin-dashboard.png["Visão geral do painel"]
+
+Na página de visão geral, você pode executar a ação *Descoberta*.  A ação de descoberta executa a descoberta no nível do vCenter para detectar quaisquer backends de armazenamento, hosts, armazenamentos de dados e status/relacionamentos de proteção adicionados ou atualizados recentemente.  Você pode executar uma descoberta de entidades sob demanda sem precisar esperar pela descoberta agendada.
+
+
+NOTE: O botão de ação será habilitado somente se você tiver o privilégio de executar a ação de descoberta.
+
+Após o envio da solicitação de descoberta, você pode acompanhar o andamento da ação no painel de tarefas recentes.
+
+O painel tem vários cartões mostrando diferentes elementos do sistema.  A tabela a seguir mostra as diferentes cartas e o que elas representam.
+
+|===
+
+
+| *Cartão* | *Descrição* 
+
+
+| Status | O cartão Status mostra o número de backends de armazenamento e o status geral de integridade dos backends de armazenamento e do Provedor VASA.  O status dos backends de armazenamento mostra *Íntegro* quando o status de todos os backends de armazenamento é normal e mostra *Não íntegro* se qualquer um dos backends de armazenamento tiver um problema (status Desconhecido/Inacessível/Degradado).  Selecione a dica de ferramenta para abrir os detalhes de status dos backends de armazenamento.  Você pode selecionar qualquer backend de armazenamento para obter mais detalhes.  O link *Outros estados do provedor VASA* mostra o estado atual do provedor VASA registrado no vCenter Server. 
+
+
+| Backends de armazenamento - Capacidade | Este cartão mostra a capacidade agregada utilizada e disponível de todos os backends de armazenamento para a instância selecionada do vCenter Server. No caso de sistemas de armazenamento ASA r2, os dados de capacidade não são exibidos por se tratar de um sistema desagregado. 
+
+
+| Máquinas virtuais | Este cartão mostra as 10 principais VMs classificadas por métrica de desempenho.  Você pode selecionar o cabeçalho para obter as 10 principais VMs para a métrica selecionada, classificadas em ordem crescente ou decrescente.  As alterações de classificação e filtragem feitas no cartão persistem até que você altere ou limpe o cache do navegador. 
+
+
+| Armazenamentos de dados | Este cartão mostra os 10 principais armazenamentos de dados classificados por uma métrica de desempenho.  Você pode selecionar o cabeçalho para obter os 10 principais armazenamentos de dados para a métrica selecionada, classificados em ordem crescente ou decrescente.  As alterações de classificação e filtragem feitas no cartão persistem até que você altere ou limpe o cache do navegador.  Há um menu suspenso Tipo de armazenamento de dados para selecionar o tipo de armazenamento de dados - NFS, VMFS ou vVols. 
+
+
+| Cartão de conformidade do host ESXi | Este cartão mostra o status geral de conformidade de todas as configurações de hosts ESXi (para o vCenter selecionado) com relação às configurações recomendadas do host NetApp por grupo/categoria de configurações.  Você pode selecionar o link *Aplicar configurações recomendadas* para aplicar as configurações recomendadas.  Você pode selecionar o status de conformidade dos hosts para ver a lista de hosts. 
+|===

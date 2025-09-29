@@ -1,0 +1,92 @@
+---
+permalink: concepts/rbac-ontap-use.html 
+sidebar: sidebar 
+keywords: ontap rbac, use ontap rbac 
+summary: Há vários aspectos das ONTAP tools for VMware vSphere 10 RBAC com ONTAP que você deve considerar antes de usá-lo em um ambiente de produção. 
+---
+= Use o ONTAP RBAC com ONTAP tools for VMware vSphere 10
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Há vários aspectos das ONTAP tools for VMware vSphere 10 RBAC com ONTAP que você deve considerar antes de usá-lo em um ambiente de produção.
+
+
+
+== Visão geral do processo de configuração
+
+As ONTAP tools for VMware vSphere 10 incluem suporte para criar um usuário ONTAP com uma função personalizada. As definições são empacotadas em um arquivo JSON que você pode carregar no cluster ONTAP . Você pode criar o usuário e adaptar a função ao seu ambiente e às suas necessidades de segurança.
+
+As principais etapas de configuração são descritas detalhadamente abaixo.  Consultelink:../configure/configure-user-role-and-privileges.html["Configurar funções e privilégios de usuário do ONTAP"] para mais detalhes.
+
+.1. Preparar
+Você precisa ter credenciais administrativas para o Gerenciador de ferramentas ONTAP e o cluster ONTAP .
+
+.2. Baixe o arquivo de definição JSON
+Após fazer login na interface de usuário do ONTAP Tools Manager, você pode baixar o arquivo JSON contendo as definições do RBAC.
+
+.3. Crie um usuário ONTAP com uma função
+Após efetuar login no Gerenciador do Sistema, você pode criar o usuário e a função:
+
+. Selecione *Cluster* à esquerda e depois *Configurações*.
+. Role para baixo até *Usuários e funções* e clique em `-->` .
+. Selecione *Adicionar* em *Usuários* e selecione *Produtos de virtualização*.
+. Selecione o arquivo JSON na sua estação de trabalho local e carregue-o.
+
+
+.4. Configurar a função
+Como parte da definição da função, você precisa tomar diversas decisões administrativas.  Ver<<Configurar a função usando o Gerenciador de Sistema>> para mais detalhes.
+
+
+
+== Configurar a função usando o Gerenciador de Sistema
+
+Depois de começar a criar um novo usuário e função com o System Manager e carregar o arquivo JSON, você pode personalizar a função com base no seu ambiente e necessidades.
+
+
+
+=== Configuração de usuário e função principais
+
+As definições do RBAC são agrupadas como vários recursos de produto, incluindo combinações de VSC, VASA Provider e SRA.  Você deve selecionar o ambiente ou ambientes onde precisa de suporte RBAC.  Por exemplo, se você quiser que as funções suportem o recurso de plug-in remoto, selecione VSC.  Você também precisa escolher o nome de usuário e a senha associada.
+
+
+
+=== Privileges
+
+Os privilégios de função são organizados em quatro conjuntos com base no nível de acesso necessário ao armazenamento ONTAP .  Os privilégios nos quais as funções são baseadas incluem:
+
+* Descoberta
++
+Esta função permite que você adicione sistemas de armazenamento.
+
+* Criar armazenamento
++
+Esta função permite que você crie armazenamento.  Ele também inclui todos os privilégios associados à função de descoberta.
+
+* Modificar armazenamento
++
+Esta função permite que você modifique o armazenamento.  Ele também inclui todos os privilégios associados à descoberta e criação de funções de armazenamento.
+
+* Destruir armazenamento
++
+Esta função permite que você destrua o armazenamento.  Ele também inclui todos os privilégios associados à descoberta, criação de armazenamento e modificação de funções de armazenamento.
+
+
+
+
+
+=== Gerar o usuário com uma função
+
+Depois de selecionar as opções de configuração para seu ambiente, clique em *Adicionar* e o ONTAP criará o usuário e a função.  O nome da função gerada é uma concatenação dos seguintes valores:
+
+* Valor de prefixo constante definido no arquivo JSON (por exemplo "OTV_10")
+* Capacidade do produto que você selecionou
+* Lista dos conjuntos de privilégios.
+
+
+.Exemplo
+`OTV_10_VSC_Discovery_Create`
+
+O novo usuário será adicionado à lista na página "Usuários e funções".  Observe que os métodos de login de usuário HTTP e ONTAPI são suportados.

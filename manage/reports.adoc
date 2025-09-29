@@ -1,0 +1,20 @@
+---
+permalink: manage/reports.html 
+sidebar: sidebar 
+keywords:  
+summary: O plug-in de ONTAP tools for VMware vSphere fornece relatórios para máquinas virtuais e armazenamentos de dados. 
+---
+= Relatórios de ferramentas ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O plug-in de ONTAP tools for VMware vSphere fornece relatórios para máquinas virtuais e armazenamentos de dados.  Quando você seleciona o ícone do plug-in NetApp ONTAP tools for VMware vSphere na seção de atalhos no cliente vCenter, a interface do usuário navega para a página Visão geral.  Selecione a guia Relatórios para visualizar o relatório da máquina virtual e dos armazenamentos de dados.
+
+O relatório de Máquinas virtuais mostra a lista de máquinas virtuais descobertas (devem ter pelo menos um disco de repositórios de dados baseados em armazenamento ONTAP ) com métricas de desempenho.  Quando você expande o registro da VM, todas as informações do armazenamento de dados relacionadas ao disco são exibidas.
+
+O relatório Datastores mostra a lista de ONTAP tools for VMware vSphere que são provisionados do backend de armazenamento ONTAP de todos os tipos com métricas de desempenho.
+
+Você pode usar a opção Gerenciar Colunas para ocultar ou mostrar colunas diferentes.

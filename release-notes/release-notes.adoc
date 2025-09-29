@@ -1,0 +1,20 @@
+---
+permalink: release-notes/release-notes.html 
+sidebar: sidebar 
+keywords: release notes, ontap tools for VMware vSphere 
+summary: Fornece informações importantes sobre esta versão das ONTAP tools for VMware vSphere, incluindo novos recursos e aprimoramentos, problemas corrigidos, problemas conhecidos, avisos e limitações. 
+---
+= Notas de lançamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre os novos e aprimorados recursos disponíveis nas ONTAP tools for VMware vSphere 10.4.
+
+Para obter uma lista completa de novos recursos e melhorias, consultexref:whats-new.adoc[Novidades nas ONTAP tools for VMware vSphere 10.4] .
+
+Para saber mais sobre se a migração das ONTAP tools for VMware vSphere 9 para as ferramentas ONTAP 10.4 é adequada para sua implantação, consultexref:ontap-tools-9-ontap-tools-10-feature-comparison.adoc[Comparação de recursos das ONTAP tools for VMware vSphere 9 e ONTAP tools for VMware vSphere 10] .  A migração é suportada das ONTAP tools for VMware vSphere versões 9.12-D e 9.13-D para as ONTAP tools for VMware vSphere 10.4.
+
+Para mais informações, consulte o https://library.netapp.com/ecm/ecm_download_file/ECMLP3343864["Notas de versão das ONTAP tools for VMware vSphere 10.4"^] . Você deve entrar com sua conta NetApp ou criar uma conta para acessar as Notas de Versão.

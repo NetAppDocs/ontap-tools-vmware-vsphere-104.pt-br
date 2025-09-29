@@ -1,0 +1,29 @@
+---
+permalink: manage/remove-storage-from-a-vvols-datastore.html 
+sidebar: sidebar 
+keywords: Remove vVol datastore 
+summary: A ação Excluir armazenamento de dados exclui o armazenamento de dados quando não há vVols no armazenamento de dados selecionado. 
+---
+= Reduzir armazenamento de dados vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A ação Excluir armazenamento de dados exclui o armazenamento de dados quando não há vVols no armazenamento de dados selecionado.
+
+
+NOTE: A operação de armazenamento de dados vVols Shrink não é suportada para armazenamento de dados vVols baseado no sistema ASA r2.
+
+.Passos
+. Na página inicial do vSphere Client, selecione *Hosts e Clusters*.
+. No painel de navegação, selecione o data center que contém o armazenamento de dados.
+. Clique com o botão direito do mouse no armazenamento de dados vVol e selecione * Ferramentas NetApp ONTAP * > * Remover armazenamento do armazenamento de dados *.
+. Selecione volumes que não tenham vVols e selecione *Remover*.
++
+
+NOTE: A opção para selecionar o volume no qual o vVols está residindo está desabilitada.
+
+. No pop-up *Remover armazenamento*, marque a caixa de seleção *Excluir volumes do cluster ONTAP * para excluir os volumes do armazenamento de dados e do armazenamento ONTAP e selecione *Excluir*.
+

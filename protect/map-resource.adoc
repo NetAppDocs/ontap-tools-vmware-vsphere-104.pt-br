@@ -1,0 +1,37 @@
+---
+permalink: protect/map-resource.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve mapear seus recursos no site protegido e no site de recuperação para que as máquinas virtuais sejam configuradas para fazer failover em um grupo de hosts ou outro. 
+---
+= Configurar mapeamentos de recursos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve mapear seus recursos no site protegido e no site de recuperação para que as máquinas virtuais sejam configuradas para fazer failover em um grupo de hosts ou outro.
+
+.Antes de começar
+Você deve ter conectado os sites protegidos e de recuperação.
+
+
+NOTE: No VMware Live Site Recovery, os recursos podem ser pools de recursos, hosts ESXi ou clusters vSphere.
+
+.Passos
+. Faça login no vCenter Server e selecione *Site Recovery* > *Sites*.
+. Selecione seu site protegido e selecione *Gerenciar*.
+. Selecione *Mapeamentos de recursos* > *Novo* na guia Gerenciar para criar um novo mapeamento de recursos.
+. No assistente Criar mapeamento de recursos, execute o seguinte:
++
+.. Selecione *Preparar automaticamente mapeamentos para recursos com nomes correspondentes* e selecione *Avançar*.
+.. Selecione os objetos de data center necessários para os sites protegidos e de recuperação e selecione *Adicionar mapeamentos*.
+.. Selecione *Avançar* depois que os mapeamentos forem criados com sucesso.
+.. Selecione o objeto usado anteriormente para criar o mapeamento reverso e selecione *Concluir*.
+
+
+
+
+.Resultado
+A página Mapeamentos de Recursos exibe os recursos do site protegido e os recursos do site de recuperação.  Você pode seguir os mesmos passos para outras redes em seu ambiente.

@@ -1,0 +1,31 @@
+---
+permalink: release-notes/whats-new.html 
+sidebar: sidebar 
+keywords: 'what"s new, release notes, 10.4, ONTAP tools for VMware vSphere' 
+summary: Saiba mais sobre os novos recursos disponíveis nas ONTAP tools for VMware vSphere 10.4. 
+---
+= Novidades nas ONTAP tools for VMware vSphere 10.4
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Saiba mais sobre os novos recursos disponíveis nas ONTAP tools for VMware vSphere 10.4.
+
+[cols="30%,70%"]
+|===
+| Atualizar | Descrição 
+
+
+| link:../configure/create-datastore.html["Suporte para sistema ASA r2 com 12 nós por cluster"] | As ONTAP tools for VMware vSphere 10.4 oferecem suporte a fluxos de trabalho para sistemas de armazenamento ASA r2 com até 12 nós por cluster, melhorando a eficiência e a escalabilidade do gerenciamento de dados.  Ele oferece suporte a datastores vVols com protocolos iSCSI e FC, e datastores VMFS com protocolos iSCSI, FC e NVMe, fornecendo opções de armazenamento flexíveis e aprimoradas. 
+
+
+| link:../manage/add-ntpserver.html["Melhorias na interface do usuário do gerenciador de ferramentas ONTAP"] | Agora você pode habilitar o servidor NTP para sincronização de tempo precisa em todo o ambiente e configurar as definições de telemetria para monitorar e analisar o desempenho do sistema a partir da interface do Gerenciador de ferramentas ONTAP .  Essas configurações não estão mais disponíveis no console de manutenção. 
+
+
+| Recursos de segurança aprimorados | Os recursos de segurança agora oferecem proteção aprimorada e conformidade com os padrões do setor, proporcionando uma experiência robusta e fácil de usar para ajudar os administradores a gerenciar ambientes VMware de forma mais eficaz. 
+
+
+| link:../protect/enable-storage-replication-adapter.html["Recursos aprimorados de recuperação de desastres SRA"] | As ONTAP tools for VMware vSphere 10.4 agora oferecem suporte a operações de recuperação de desastres usando Site Recovery Appliance (SRA) com snapshots com nomes personalizados, além de cópias de snapshots agendadas do SnapMirror . 
+|===

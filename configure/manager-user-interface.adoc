@@ -1,0 +1,48 @@
+---
+permalink: configure/manager-user-interface.html 
+sidebar: sidebar 
+keywords: ontap tools manager, managerui 
+summary: O ONTAP Tools Manager fornece mais controle e poder ao administrador do ONTAP tools for VMware vSphere , o que ajuda no gerenciamento geral do dispositivo, dos locatários e dos backends de armazenamento. 
+---
+= Interface de usuário do gerenciador de ferramentas ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As ONTAP tools for VMware vSphere são um sistema multilocatário que pode gerenciar várias instâncias do vCenter Server.  O ONTAP Tools Manager fornece mais controle ao administrador do ONTAP tools for VMware vSphere sobre as instâncias gerenciadas do vCenter Server e os backends de armazenamento integrados.
+
+O Gerenciador de ferramentas ONTAP ajuda em:
+
+* Gerenciamento de instâncias do vCenter Server - Adicione e gerencie instâncias do vCenter Server às ferramentas ONTAP .
+* Gerenciamento de backend de armazenamento - Adicione e gerencie clusters de armazenamento ONTAP às ONTAP tools for VMware vSphere e mapeie-os para instâncias integradas do vCenter Server globalmente.
+* Downloads de pacotes de log - Colete arquivos de log para ONTAP tools for VMware vSphere.
+* Gerenciamento de certificados - Altere o certificado autoassinado para um certificado de CA personalizado e renove ou atualize todos os certificados do VASA Provider e das ferramentas ONTAP .
+* Gerenciamento de senhas - Redefina a senha do aplicativo OVA do usuário.
+
+
+Para acessar o Gerenciador de ferramentas ONTAP , inicie `\https://<ONTAPtoolsIP>:8443/virtualization/ui/` no navegador e faça login com as credenciais de administrador das ONTAP tools for VMware vSphere fornecidas durante a implantação.
+
+A seção Visão geral do Gerenciador de ferramentas ONTAP ajuda a gerenciar a configuração do dispositivo, como gerenciamento de serviços, aumento de tamanho do nó e habilitação de alta disponibilidade (HA).  Você também pode monitorar as informações gerais das ferramentas ONTAP relacionadas ao(s) nó(s), como integridade, detalhes da rede e alertas.
+
+image:../media/ontap-tools-manager-overview.png["Visão geral do painel do gerenciador de ferramentas ONTAP"]
+
+|===
+| *Cartão* | *Descrição* 
+
+
+| Cartão de eletrodomésticos | O cartão do dispositivo fornece o status geral do dispositivo ONTAP Tools.  Ele mostra os detalhes da configuração do dispositivo e o status dos serviços habilitados.  Para obter informações adicionais sobre o dispositivo ONTAP Tools, selecione o link *Exibir detalhes*.  Quando uma ação de edição de configuração do dispositivo está em andamento, o portlet do dispositivo mostra o status e os detalhes do trabalho. 
+
+
+| Cartão de alertas | O cartão Alertas lista os alertas das ferramentas ONTAP por tipo, incluindo os alertas no nível do nó HA.  Você pode visualizar a lista de alertas selecionando o texto de contagem (hiperlink).  O link direciona você para a página de visualização de alertas filtrada pelo tipo selecionado. 
+
+
+| vCenters | O cartão vCenter mostra o status de integridade dos vCenters no sistema. 
+
+
+| Backends de armazenamento | O cartão Backends de armazenamento mostra o status de integridade dos backends de armazenamento no sistema. 
+
+
+| Cartão de nós de ferramentas ONTAP | O cartão de nós das ferramentas ONTAP mostra a lista de nós com nome do nó, nome da VM do nó, status e todos os dados relacionados à rede.  Você pode selecionar *Exibir detalhes* para visualizar detalhes adicionais relacionados ao nó selecionado.  [NOTA] Em uma configuração não HA, apenas um nó é mostrado.  Na configuração do HA, três nós são mostrados. 
+|===

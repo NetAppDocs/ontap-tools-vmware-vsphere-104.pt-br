@@ -1,0 +1,104 @@
+---
+permalink: configure/configure-esx-server-multipath-and-timeout-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: As ONTAP tools for VMware vSphere verificam e definem as configurações de multicaminhos do host ESXi e as configurações de tempo limite do HBA que funcionam melhor com os sistemas de armazenamento NetApp . 
+---
+= Configurar as definições do host ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração de multicaminhos e tempo limite do servidor ESXi garante alta disponibilidade e integridade de dados, permitindo alternar facilmente para um caminho de armazenamento de backup se um caminho primário falhar.
+
+
+
+== Configurar configurações de multicaminho e tempo limite do servidor ESXi
+
+As ONTAP tools for VMware vSphere verificam e definem as configurações de multicaminho do host ESXi e as configurações de tempo limite do HBA que funcionam melhor com os sistemas de armazenamento NetApp .
+
+*Sobre esta tarefa*
+
+Dependendo da sua configuração e da carga do sistema, esse processo pode levar muito tempo.  O progresso da tarefa é exibido no painel Tarefas recentes.
+
+.Passos
+. Na página inicial do cliente VMware vSphere Web, selecione *Hosts e Clusters*.
+. Clique com o botão direito do mouse em um host e selecione * Ferramentas NetApp ONTAP * > *Atualizar dados do host*.
+. Na página de atalhos do cliente Web VMware vSphere, selecione * Ferramentas NetApp ONTAP * na seção de plug-ins.
+. Acesse o cartão *Conformidade do host ESXi* na visão geral (painel) do plug-in ONTAP tools for VMware vSphere .
+. Selecione o link *Aplicar configurações recomendadas*.
+. Na janela *Aplicar configurações de host recomendadas*, selecione os hosts que você deseja atualizar para cumprir as configurações recomendadas da NetApp e selecione *Avançar*.
++
+
+NOTE: Você pode expandir o host ESXi para ver os valores atuais.
+
+. Na página de configurações, selecione os valores recomendados conforme necessário.
+. No painel de resumo, verifique os valores e selecione *Concluir*.  Você pode acompanhar o progresso no painel de tarefas recentes.
+
+
+
+
+== Definir valores do host ESXi
+
+Usando ONTAP tools for VMware vSphere, você pode definir tempos limite e outros valores nos hosts ESXi para garantir o melhor desempenho e failover bem-sucedido.  Os valores que as ONTAP tools for VMware vSphere definem são baseados em testes internos da NetApp .
+
+Você pode definir os seguintes valores em um host ESXi:
+
+
+
+=== Configurações do adaptador HBA/CNA
+
+Define os seguintes parâmetros para valores padrão:
+
+* Disco.QFullSampleSize
+* Disco.QFullThreshold
+* Tempo limite do Emulex FC HBA
+* Tempo limite do QLogic FC HBA
+
+
+
+
+=== Configurações do MPIO
+
+As configurações de MPIO definem os caminhos preferenciais para sistemas de armazenamento NetApp .  Eles determinam quais dos caminhos disponíveis são otimizados (em oposição aos caminhos não otimizados que atravessam o cabo de interconexão) e definem o caminho preferencial para um desses caminhos.
+
+Em ambientes de alto desempenho, ou quando você estiver testando o desempenho com um único armazenamento de dados LUN, considere alterar a configuração de balanceamento de carga da política de seleção de caminho (PSP) round-robin (VMW_PSP_RR) da configuração IOPS padrão de 1000 para um valor de 1.
+
+
+NOTE: As configurações de MPIO não se aplicam aos protocolos NVMe, NVMe/FC e NVMe/TCP.
+
+
+
+=== Configurações NFS
+
+|===
+
+
+| Parâmetro | Defina este valor como... 
+
+
+| Tamanho líquido do heap Tcpip | 32 
+
+
+| Rede.TcpipHeapMax | 1024 MB 
+
+
+| NFS.Volumes Máximos | 256 
+
+
+| NFS41.MaxVolumes | 256 
+
+
+| NFS.MaxQueueDepth | 128 ou superior 
+
+
+| NFS.HeartbeatMaxFalhas | 10 
+
+
+| NFS.Frequência de batimentos cardíacos | 12 
+
+
+| NFS.Tempo limite de pulsação | 5 
+|===

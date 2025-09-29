@@ -1,0 +1,63 @@
+---
+permalink: manage/migrate-virtual-machines.html 
+sidebar: sidebar 
+keywords:  
+summary: Você deve estar ciente de algumas considerações ao migrar máquinas virtuais existentes em seu data center. 
+---
+= Considerações para migrar ou clonar máquinas virtuais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve estar ciente de algumas considerações ao migrar máquinas virtuais existentes em seu data center.
+
+
+
+== Migrar máquinas virtuais protegidas
+
+Você pode migrar as máquinas virtuais protegidas para:
+
+* Mesmo armazenamento de dados vVols em um host ESXi diferente
+* Diferentes armazenamentos de dados vVols compatíveis no mesmo host ESXi
+* Diferentes armazenamentos de dados vVols compatíveis em um host ESXi diferente
+
+
+Se a máquina virtual for migrada para um FlexVol volume diferente, o respectivo arquivo de metadados também será atualizado com as informações da máquina virtual.  Se uma máquina virtual for migrada para um host ESXi diferente, mas com o mesmo armazenamento, o arquivo de metadados do FlexVol volume subjacente não será modificado.
+
+
+
+== Clonar máquinas virtuais protegidas
+
+Você pode clonar máquinas virtuais protegidas para o seguinte:
+
+* Mesmo contêiner do mesmo FlexVol volume usando grupo de replicação
++
+O arquivo de metadados do mesmo volume FlexVol é atualizado com os detalhes da máquina virtual clonada.
+
+* Mesmo contêiner de um FlexVol volume diferente usando grupo de replicação
++
+O FlexVol volume onde a máquina virtual clonada é colocada, o arquivo de metadados é atualizado com os detalhes da máquina virtual clonada.
+
+* Diferentes contêineres ou armazenamento de dados vVols
++
+O FlexVol volume onde a máquina virtual clonada é colocada, o arquivo de metadados obtém detalhes atualizados da máquina virtual.
+
+
+
+Atualmente, a VMware não oferece suporte a máquinas virtuais clonadas em um modelo de VM.
+
+Há suporte para clone de clone de uma máquina virtual protegida.
+
+Consulte https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-virtual-machine-administration-guide-7-0/deploying-virtual-machinesvm-admin/clone-an-existing-virtual-machine-h5vm-admin.html["Criando uma Máquina Virtual para Clonagem"] para mais detalhes.
+
+
+
+== Snapshots de Máquina Virtual
+
+Atualmente, apenas instantâneos de máquinas virtuais sem memória são suportados.  Se a máquina virtual tiver um Snapshot com memória, ela não será considerada para proteção.
+
+Você também não pode proteger máquinas virtuais desprotegidas que tenham instantâneo de memória. Para esta versão, espera-se que você exclua o instantâneo de memória antes de habilitar a proteção para a máquina virtual.
+
+Para VMs do Windows com tipo de armazenamento ASA r2, quando você tira um instantâneo da máquina virtual, ele será somente leitura.  Quando há energia disponível para a VM, o VASA Provider cria um LUN usando o snapshot somente leitura e então o habilita para IOPS.  Durante a solicitação de desligamento, o VASA Provider exclui o LUN que foi criado e então desabilita o IOPS.

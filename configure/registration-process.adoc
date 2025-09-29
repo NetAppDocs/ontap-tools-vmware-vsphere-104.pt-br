@@ -1,0 +1,33 @@
+---
+permalink: configure/registration-process.html 
+sidebar: sidebar 
+keywords:  
+summary: Você pode registrar o VASA Provider com uma instância do vCenter Server usando ONTAP tools for VMware vSphere . 
+---
+= Registre o provedor VASA com uma instância do vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode registrar o VASA Provider com uma instância do vCenter Server usando ONTAP tools for VMware vSphere.  A seção Configurações do Provedor VASA exibe o status de registro do Provedor VASA para o vCenter Server selecionado.  Em uma implantação de vários vCenters, certifique-se de ter certificados CA personalizados para cada instância do vCenter Server.
+
+.Passos
+. Efetue login no cliente vSphere.
+. Selecione *Atalhos* > *Ferramentas NetApp ONTAP * na seção de plug-ins.
+. Selecione *Configurações* > *Configurações do provedor VASA*. O status de registro do Provedor VASA será exibido como não registrado.
+. Selecione o botão *Registrar* para registrar o Provedor VASA.
+. Insira um nome e credenciais para o Provedor VASA. O nome de usuário só pode conter letras, números e sublinhados. O comprimento da senha deve ter entre 8 e 256 caracteres.
+. Selecione *Registrar*.
+. Após um registro bem-sucedido e atualização da página, o status, o nome e a versão do Provedor VASA registrado são exibidos.  Após o registro, a ação de cancelamento de registro é ativada.
+
+
+.O que vem a seguir
+Verifique se o Provedor VASA integrado está listado em Provedor VASA do cliente vCenter:
+
+.Passos
+. Navegue até a instância do vCenter Server.
+. Efetue login com as credenciais de administrador.
+. Selecione *Provedores de armazenamento* > *Configurar*.  Verifique se o Provedor VASA integrado está listado corretamente.
+

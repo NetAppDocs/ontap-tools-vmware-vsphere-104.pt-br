@@ -1,0 +1,68 @@
+---
+permalink: protect/configure-storage-replication-adapter-for-highly-scaled-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Você deve configurar os intervalos de tempo limite de armazenamento de acordo com as configurações recomendadas para o Adaptador de Replicação de Armazenamento (SRA) para ter um desempenho ideal em ambientes altamente escalonados.' 
+---
+= Configurar SRA para ambientes altamente escalonados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve configurar os intervalos de tempo limite de armazenamento de acordo com as configurações recomendadas para que o Adaptador de Replicação de Armazenamento (SRA) tenha um desempenho ideal em ambientes altamente escalonados.
+
+
+
+== Configurações do provedor de armazenamento
+
+Você deve definir os seguintes valores de tempo limite no VMware Live Site Recovery para ambiente dimensionado:
+
+|===
+
+
+| *Configurações avançadas* | *Valores de tempo limite* 
+
+
+ a| 
+`StorageProvider.resignatureTimeout`
+ a| 
+Aumente o valor da configuração de 900 segundos para 12.000 segundos.
+
+
+
+ a| 
+`storageProvider.hostRescanDelaySec`
+ a| 
+60
+
+
+
+ a| 
+`storageProvider.hostRescanRepeatCnt`
+ a| 
+20
+
+
+
+ a| 
+`storageProvider.hostRescanTimeoutSec`
+ a| 
+Defina um valor alto (por exemplo: 99999)
+
+|===
+Você também deve habilitar o `StorageProvider.autoResignatureMode` opção.
+
+Consulte https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["Alterar configurações do provedor de armazenamento"] para obter mais informações sobre como modificar as configurações do Provedor de Armazenamento.
+
+
+
+== Configurações de armazenamento
+
+Quando você atingir um tempo limite, aumente os valores de `storage.commandTimeout` e `storage.maxConcurrentCommandCnt` para um valor mais alto.
+
+
+NOTE: O intervalo de tempo limite especificado é o valor máximo. Você não precisa esperar que o tempo limite máximo seja atingido. A maioria dos comandos termina dentro do intervalo de tempo limite máximo definido.
+
+Consulte https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["Alterar configurações de armazenamento"] para modificar as configurações do Provedor SAN.
