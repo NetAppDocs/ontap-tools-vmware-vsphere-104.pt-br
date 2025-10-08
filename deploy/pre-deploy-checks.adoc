@@ -60,13 +60,13 @@ Use a planilha a seguir para reunir as informações necessárias para as ONTAP 
 | Exigência | Seu valor 
 
 
-| Endereço IP para o aplicativo de ferramentas ONTAP . Este é o endereço IP para acessar a interface web das ferramentas ONTAP |  
+| Endereço IP para o aplicativo de ferramentas ONTAP . Este é o endereço IP para acessar a interface web das ferramentas ONTAP (balanceador de carga) |  
 
 
-| Ferramentas ONTAP endereço IP virtual para comunicação interna. Este endereço IP é usado para comunicação interna em uma configuração com várias instâncias de ferramentas ONTAP . Este endereço IP não deve ser o mesmo que o endereço IP do aplicativo de ferramentas ONTAP . |  
+| Ferramentas ONTAP endereço IP virtual para comunicação interna. Este endereço IP é usado para comunicação interna em uma configuração com várias instâncias de ferramentas ONTAP . Este endereço IP não deve ser o mesmo que o endereço IP do aplicativo de ferramentas ONTAP . (O Plano de Controle do Kubernetes) |  
 
 
-| Nome do host DNS para o primeiro nó |  
+| Nome do host DNS para o nó de gerenciamento de ferramentas ONTAP |  
 
 
 | Servidor DNS primário |  
@@ -78,7 +78,7 @@ Use a planilha a seguir para reunir as informações necessárias para as ONTAP 
 | Domínio de pesquisa DNS |  
 
 
-| Endereço IPv4 para o primeiro nó. É um endereço IPv4 exclusivo para a interface de gerenciamento de nós na rede de gerenciamento. |  
+| Endereço IPv4 para o nó de gerenciamento de ferramentas ONTAP . É um endereço IPv4 exclusivo para a interface de gerenciamento de nós na rede de gerenciamento. |  
 
 
 | Máscara de sub-rede para o endereço IPv4 |  

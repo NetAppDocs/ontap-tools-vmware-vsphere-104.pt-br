@@ -48,7 +48,7 @@ NOTE: Depois que a configuração de HA for habilitada, não será possível rev
 . Na seção *Configurações de HA* da janela *Editar configurações do dispositivo*, você pode inserir os detalhes dos nós 2 e 3.  As ONTAP tools for VMware vSphere oferecem suporte a três nós na configuração de HA.
 +
 
-NOTE: A maioria das opções de entrada são pré-preenchidas com detalhes da rede do Nó 1 para facilitar o fluxo de trabalho. No entanto, você pode editar os dados de entrada antes de navegar para a página final do assistente. Você pode inserir detalhes do endereço IPv6 para os outros dois nós somente quando o endereço IPv6 estiver habilitado no primeiro nó.
+NOTE: A maioria das opções de entrada são pré-preenchidas com detalhes da rede do Nó 1 para facilitar o fluxo de trabalho. No entanto, você pode editar os dados de entrada antes de navegar para a página final do assistente. Você pode inserir detalhes do endereço IPv6 para os outros dois nós somente quando o endereço IPv6 estiver habilitado no nó de gerenciamento de ferramentas ONTAP .
 
 +
 Certifique-se de que um host ESXi contenha apenas uma VM de ferramentas ONTAP .  As entradas são validadas cada vez que você avança para a próxima janela.

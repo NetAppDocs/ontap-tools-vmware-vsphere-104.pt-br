@@ -20,7 +20,7 @@ OBSERVAÇÃO:
 
 
 .Antes de começar
-Para uma atualização sem HA, desligue a VM das ferramentas ONTAP e, para uma atualização de HA, desligue o primeiro nó antes de fazer as seguintes alterações nas configurações da máquina virtual (VM).
+Para uma atualização sem HA, desligue a VM das ferramentas ONTAP e, para uma atualização de HA, desligue o nó de gerenciamento das ferramentas ONTAP antes de fazer as seguintes alterações nas configurações da máquina virtual (VM).
 
 Se você estiver atualizando a partir das ONTAP tools for VMware vSphere 10.2 ou 10.3, precisará concluir as seguintes etapas antes de prosseguir com a tarefa de atualização: * Adicione um disco rígido adicional de 100 GB a cada nó, pois os dados do serviço são armazenados localmente na VM. * Altere a CPU e a memória da VM desligada de acordo com a sua implantação. Habilite o plugin ativo para CPU e RAM.
 
@@ -123,7 +123,7 @@ Após atualizar para as ONTAP tools for VMware vSphere 10.4, você pode:
 * Desabilitar os serviços da interface do usuário do gerenciador
 * Migrar de uma configuração sem HA para uma configuração com HA
 * Aumente a escala de uma configuração pequena não HA para uma configuração média não HA ou para uma configuração média ou grande HA.
-* No caso de uma atualização não HA, reinicie a VM das ferramentas ONTAP para refletir as alterações.  No caso de uma atualização de HA, reinicie o primeiro nó para refletir as alterações no nó.
+* No caso de uma atualização não HA, reinicie a VM das ferramentas ONTAP para refletir as alterações. No caso de uma atualização de HA, reinicie o nó de gerenciamento de ferramentas ONTAP para refletir as alterações no nó.
 
 
 .O que vem a seguir
