@@ -1055,58 +1055,16 @@
   <block id="e047b55bfbc6ebe2f16524db25c3d398" category="paragraph">A Interoperability Matrix Tool (IMT) contém as informações mais recentes sobre as versões suportadas do ONTAP, vCenter Server, hosts ESXi e aplicativos de plug-in.</block>
   <block id="918d32b75f0ab883abba3a8dc0c3ae8d" category="inline-link">Ferramenta de Matriz de Interoperabilidade</block>
   <block id="d9feb2b730ded2731ab499f4b64cca33" category="paragraph"><block ref="ccafd2400edf7c1aa273a76ad605940f" category="inline-link-rx"></block></block>
-  <block id="539fe4c7849ba8b90945fa7a65b43e41" category="paragraph">A tabela a seguir descreve as portas de rede utilizadas pela NetApp e suas finalidades. Certifique-se de que essas portas estejam abertas e acessíveis para facilitar a operação e a comunicação adequadas dentro do sistema. Certifique-se de que as configurações de rede necessárias estejam implementadas para permitir o tráfego nessas portas e o funcionamento correto dos serviços associados. Dependendo das suas políticas de segurança, pode ser necessário configurar firewalls ou outros dispositivos de segurança para permitir esse tráfego na sua rede.</block>
   <block id="5ddcf17f54788a5bb9148e8671562c06" category="cell">*Porta*</block>
   <block id="dce365633ffb688b7532470dfaf4e118" category="cell">*Protocolo*</block>
-  <block id="0c95054981de037de06e544a52eb3613" category="cell">8143</block>
   <block id="b136ef5f6a01d816991fe3cf7a6ac763" category="cell">TCP</block>
-  <block id="a78ff8f5e1a40f03bf97db00bda0fb5f" category="cell">Conexões HTTP/HTTPS para ferramentas ONTAP .</block>
-  <block id="5bd529d5b07b647a8863cf71e98d651a" category="cell">8043</block>
-  <block id="cb4b69eb9bd10da82c15dca2f86a1385" category="cell">9060</block>
   <block id="b6d767d2f8ed5d21a44b0e5886680cb9" category="cell">22</block>
-  <block id="07ac8d53698f067d7d278deb303748d3" category="cell">O Ansible usa essa porta SSH para comunicação durante o provisionamento do cluster.  Esta porta é necessária para funcionalidades como alteração de senha do usuário de manutenção, mensagens de status e para atualizar valores em todos os três nós no caso de configuração de HA.</block>
-  <block id="13f3cf8c531952d72e5847c4183e6910" category="cell">443</block>
-  <block id="9bb143d7a2036a80e106dc066c6b01f2" category="cell">Esta é a porta de passagem para comunicação de entrada para o serviço do Provedor VASA.  O certificado autoassinado do provedor VASA e o certificado CA personalizado são hospedados nesta porta.</block>
-  <block id="7e6b20d014d1c659e4eaf20dc2dcd7eb" category="cell">8443</block>
-  <block id="05820e7e588ce97dc4656c92f1b83966" category="cell">Esta porta hospeda a documentação da API por meio do swagger e do aplicativo de interface de usuário do Manager.</block>
-  <block id="add217938e07bb1fd8796e0315b88c10" category="cell">2379</block>
-  <block id="a5cc260611cf9a7ec571425794a59970" category="cell">Esta é a porta padrão para solicitações de clientes, como obter, colocar, excluir ou observar chaves no armazenamento de valores de chave do etcd.</block>
-  <block id="da4902cb0bc38210839714ebdcf0efc3" category="cell">2380</block>
-  <block id="8251f4d10510ac6bdb1df6c86a270877" category="cell">Esta é a porta padrão para comunicação de servidor para servidor para o cluster etcd usada para o algoritmo de consenso raft, no qual o etcd se baseia para replicação e consistência de dados.</block>
-  <block id="e5e6851e7f7ffd3530e7389e183aa468" category="cell">7472</block>
   <block id="8962b8350728e2f6eb9cbbb07ca70d86" category="cell">TCP/UDP</block>
-  <block id="daf6d8a8d78132982e15d86e6c438d2c" category="cell">Esta é a porta de serviço de métricas do Prometheus.</block>
-  <block id="5d188b044333b4c62676e0d4f53dade7" category="cell">7946</block>
-  <block id="d0c5d9fb3af3553dbc8aa2d531b38b8f" category="cell">Esta porta é usada para descoberta de rede de contêineres do Docker.</block>
-  <block id="a44ba9086b2b83ccf2baf7c678723449" category="cell">9083</block>
-  <block id="131790b08b90f216c8731a6e1a071001" category="cell">Esta porta é uma porta de serviço usada internamente para o serviço do Provedor VASA.</block>
-  <block id="abea47ba24142ed16b7d8fbf2c740e0d" category="cell">1162</block>
   <block id="f5ef036b4d8b630721e51fe23489fbc9" category="cell">UDP</block>
-  <block id="ef2d924bd68e8697255e5349875213c7" category="cell">Esta é a porta de pacotes de trap SNMP.</block>
   <block id="c03afab54002887e7e1d27a1069e206c" category="cell">6443</block>
-  <block id="344246837eb9cebeda0390f27595098a" category="cell">Fonte: nós de agentes RKE2.  Destino: nós do servidor REK2.  Descrição: API do Kubernetes</block>
   <block id="76444b3132fda0e2aca778051d776f1c" category="cell">9345</block>
-  <block id="d1666d7b518ad556f4c40bbdc50656d1" category="cell">Fonte: nós de agentes RKE2.  Destino: nós do servidor REK2.  Descrição: API do supervisor REK2</block>
   <block id="6d1e481bdcf159961818823e652a7725" category="cell">8472</block>
-  <block id="a4b2529ef64aa741ab10320d0015b5fd" category="cell">TCP+UDP</block>
-  <block id="8133e71f09aebd3b7b7114054e3996be" category="cell">Todos os nós precisam ser capazes de alcançar outros nós pela porta UDP 8472 quando o Flannel VXLAN for usado.  Fonte: todos os nós RKE2.  Destino: todos os nós REK2.  Descrição: Canal CNI com VXLAN</block>
-  <block id="183f50a7700982a3ed18ff6d7a5777bf" category="cell">10250</block>
-  <block id="26e6b756f989b3caa29f4476282eb8a7" category="cell">Fonte: todos os nós RKE2.  Destino: todos os nós REK2.  Descrição: Métricas do Kubelet</block>
-  <block id="84826728868f63de4eeb2f3b77cd762b" category="cell">30000-32767</block>
-  <block id="8954b42ae621d3a93011debf55edbeaf" category="cell">Fonte: todos os nós RKE2.  Destino: todos os nós REK2.  Descrição: Intervalo de portas NodePort</block>
   <block id="202cb962ac59075b964b07152d234b70" category="cell">123</block>
-  <block id="caf50900f166353ae4848c8c5ddf3383" category="cell">O Ntpd usa esta porta para realizar a validação do servidor NTP.</block>
-  <block id="8c4743470c970199a9d1b885cf3df364" category="cell">137-139</block>
-  <block id="e68652501a313c2d1874782fb9aa6cc3" category="cell">Pacotes de compartilhamento SMB/Windows.</block>
-  <block id="46d045ff5190f6ea93739da6c0aa19bc" category="cell">6789</block>
-  <block id="d64901cbc0ab46c670bc45c9b4a642a8" category="cell">Monitor Ceph (MON)</block>
-  <block id="63bfd6e8f26d1d3537f4c5038264ef36" category="cell">3300</block>
-  <block id="1a8c8d3ae7b0bbd9509b8905da9fa100" category="cell">6800-7300</block>
-  <block id="3e78b2f1a88a42db241d9a8ac8a6c679" category="cell">Gerenciadores Ceph, OSDs e Sistema de Arquivos (MDS).</block>
-  <block id="f033ab37c30201f73f142449d037028d" category="cell">80</block>
-  <block id="b1f7345122d52ddee0d7713bfad8b79b" category="cell">Gateway Ceph RADOS (RGW)</block>
-  <block id="d82d678e9583c1f5f283ec56fbf1abb7" category="cell">9080</block>
-  <block id="4b32bee2eb6c3d05fc70a5fb2dffcb1c" category="cell">Conexões VP HTTP/HTTPS (somente de 127.0.0.0/8 para IPv4 ou ::1/128 para IPv6).</block>
   <block id="5541521d8d465590f0919510f29154b2" category="section-title">Limites de configuração para implantar ONTAP tools for VMware vSphere</block>
   <block id="96c7de8d06430bb8621d9ca29f8bf76b" category="paragraph">Você pode usar a tabela a seguir como um guia para configurar ONTAP tools for VMware vSphere.</block>
   <block id="4043f29990bf7ab4f6f8e863d6aaacfa" category="cell">*Implantação*</block>
@@ -2330,7 +2288,6 @@
   <block id="ef9e53e40d78d57abe78283a3603eb4e" category="list-text">Selecione o arquivo ISO da biblioteca de conteúdo na janela de edição de configurações no campo *Unidade de CD/DVD*.</block>
   <block id="54a029420d74c0dff69239155cf510b5" category="inline-image-macro">Editar configurações</block>
   <block id="2c2d3019834934bb25449edddc396321" category="list-text">Selecione o arquivo ISO e selecione *OK*.  Selecione a caixa de seleção conectada no campo *Unidade de CD/DVD*.<block ref="af57a506b85774ef3a9f849e2b26e258" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="17ed2c4d54e60ea5223b73996ed7aa1f" category="list-text">Digite *3* para selecionar o menu Configuração do Sistema.</block>
   <block id="baab61a76fb8179e23cdeb844ecfde7e" category="list-text">Digite *7* para selecionar a opção de atualização.</block>
   <block id="6aa61138e01e77bb590500715db216a4" category="list-text">Ao atualizar, as seguintes ações são executadas automaticamente:</block>
   <block id="3f50e7c6b4d426580688c6da56153793" category="list-text">Atualização de certificado</block>
@@ -2411,4 +2368,69 @@
   <block id="240613f793edcc2e992729a70507371a" category="paragraph"><block ref="240613f793edcc2e992729a70507371a" category="inline-link-rx"></block></block>
   <block id="3904c99d9933639730b4d4478c649721" category="paragraph">Para uma atualização sem HA, desligue a VM das ferramentas ONTAP e, para uma atualização de HA, desligue o nó de gerenciamento das ferramentas ONTAP antes de fazer as seguintes alterações nas configurações da máquina virtual (VM).</block>
   <block id="c79e7f78a612cfc75436e834b5708fae" category="list-text">No caso de uma atualização não HA, reinicie a VM das ferramentas ONTAP para refletir as alterações. No caso de uma atualização de HA, reinicie o nó de gerenciamento de ferramentas ONTAP para refletir as alterações no nó.</block>
+  <block id="d6200c71714f45121b9b19360cec0630" category="paragraph">A tabela a seguir descreve as portas de rede utilizadas pela NetApp e suas finalidades. Existem três tipos diferentes de portas:</block>
+  <block id="ffc9eeee8fddb03c01c7595ed7d9ef20" category="list-text">Portas externas: Essas portas são acessíveis de fora do cluster ou nó do Kubernetes.  Eles permitem que os serviços se comuniquem com redes ou usuários externos, possibilitando a integração com sistemas fora do ambiente de cluster.</block>
+  <block id="594ed13b4371cfff54a163037f8027fd" category="list-text">Portas entre nós: Essas portas permitem a comunicação entre os nós dentro do cluster Kubernetes.  São necessários para tarefas em cluster, como compartilhamento de dados e trabalho em conjunto.  Em implantações com um único nó, as portas entre nós são usadas apenas dentro do próprio nó e não precisam de acesso externo.  As portas entre nós podem aceitar tráfego de fora do cluster.  Bloqueie o acesso à internet das portas entre nós usando regras de firewall.</block>
+  <block id="a71b2f612491c16fd3ccd7aea87a39ce" category="list-text">Portas internas: Essas portas comunicam-se dentro do cluster Kubernetes usando endereços ClusterIP.  Eles não são expostos externamente e não precisam ser adicionados às regras do firewall.</block>
+  <block id="40be5cc49cd5c75f73a6fb947ad09668" category="admonition">Certifique-se de que todos os nós das ferramentas ONTAP residam na mesma sub-rede para manter uma comunicação ininterrupta entre si.</block>
+  <block id="32b77a34ac580798094847606125ee3f" category="cell">*Nome do serviço/componente*</block>
+  <block id="fb3301dd70508451098d3bf2e0f229dc" category="cell">*Tipo de porta*</block>
+  <block id="0fe9f736e781b8ae77a4dc265b308ebe" category="cell">serviço ntv-gateway (LB)</block>
+  <block id="225c8f048e5709c6d0264edeb227d6d2" category="cell">443, 8443</block>
+  <block id="b206a1b4ea1097761f78e8876f6da779" category="cell">Externo</block>
+  <block id="ee06f8cf62ebebce2fc682c3c88efaca" category="cell">Porta de passagem para comunicação de entrada do serviço VASA Provider. O certificado autoassinado do provedor VASA e o certificado CA personalizado são hospedados nesta porta.</block>
+  <block id="765553e6c7ac8592c389acb9878a050a" category="cell">SSH</block>
+  <block id="135064d8b8ef9153aa4d38ae8782828f" category="cell">Shell seguro para login remoto em servidores e execução de comandos.</block>
+  <block id="0174928de3b4efea8b958f92bc41ae33" category="cell">servidor rke2</block>
+  <block id="3d8c374783a1bcc7fa61483357a4da6c" category="cell">Inter-nó</block>
+  <block id="dbb53621f59553f9a8624fa7abf760c6" category="cell">API supervisora RKE2 (Restringir a redes confiáveis).</block>
+  <block id="6d61fe6aa1fb019df82898d5144703c6" category="cell">kube-apiserver</block>
+  <block id="cca9fc63e3115af1a58e5c1e6e0b7004" category="cell">Porta do servidor da API do Kubernetes (Restringir a redes confiáveis).</block>
+  <block id="c1eb43c159e761b5aa656b39c4a19c3c" category="cell">rpcbind/portmapper</block>
+  <block id="faacbda8079718ebf57507b9370a5cb8" category="cell">Utilizado para comunicação RPC entre serviços.</block>
+  <block id="06dc4c7a187ef5f93a26b76c544589d9" category="cell">núcleos (DNS)</block>
+  <block id="d82c8d1619ad8176d665453cfb2e55f0" category="cell">53</block>
+  <block id="6b6bfb9422fcc063d87dad5518a22387" category="cell">Serviço de Sistema de Nomes de Domínio (DNS) para resolução de nomes dentro do cluster.</block>
+  <block id="5c54cb8f927a6c5a90622e1c7bd0bda5" category="cell">NTP</block>
+  <block id="28cabd936fc9e4dd676e5a473c991a9d" category="cell">Protocolo de Tempo de Rede (NTP) para sincronização de tempo.</block>
+  <block id="a226e9fbdfc1c8dd7e7fef4d333f86ed" category="cell">etcd</block>
+  <block id="4c5fe472aba4c61b8035b29586909501" category="cell">2379, 2380, 2381</block>
+  <block id="ca1016fc257fb4f206daba9c2e97602e" category="cell">Armazenamento de chave-valor para dados de cluster.</block>
+  <block id="0a753cc7c42ae02897ec5d952c6eeac3" category="cell">kube-vip</block>
+  <block id="a29d1598024f9e87beab4b98411d48ce" category="cell">2112</block>
+  <block id="6fd0a8d83b6bfaef8466f1eba5737f28" category="cell">Porta do servidor da API do Kubernetes.</block>
+  <block id="703e9c640b9e3ea630f6687938e43c9a" category="cell">kubelet</block>
+  <block id="ef6964cc948c50c0cb0f8e9c8c67d0b8" category="cell">10248, 10250</block>
+  <block id="6bc1cc8e5f4a2a59b1b4e10039d894d7" category="cell">Componente do Kubernetes</block>
+  <block id="5165268f7f73ee49d7f2962e7d3c2c4c" category="cell">kube-controlador</block>
+  <block id="9578a63fbe545bd82cc5bbe749636af1" category="cell">10257</block>
+  <block id="859a378c2edcfab4acc9054bf56d3ad1" category="cell">controlador de nuvem</block>
+  <block id="bd21307bad44dee908db2db5f6bf23c1" category="cell">10258</block>
+  <block id="81e0da1d45d48cb04172d7ca06e7effc" category="cell">kube-scheduler</block>
+  <block id="e44cf9762b402f5d8b5bc36f60304a15" category="cell">10259</block>
+  <block id="ea11065c99d9485fc7fe03aa1b668c20" category="cell">kube-proxy</block>
+  <block id="de5866a4d3536b773cd15b5e1e56bce8" category="cell">10249, 10256</block>
+  <block id="f4928ee7ea1ab0b3ae6cae5224c5cc14" category="cell">nó-calico</block>
+  <block id="0bb129af5c1fe13f217dc8c723b47ed6" category="cell">9091, 9099</block>
+  <block id="018630692c9be69155a82729a37de8d3" category="cell">Componente de rede Calico.</block>
+  <block id="34c54dce528ae11502f7c2908c0e4a21" category="cell">containerd</block>
+  <block id="a17479231dc298309a3fda7d7d00111a" category="cell">10010</block>
+  <block id="3c5a7d3a7abc9326167b18577df244e3" category="cell">Serviço daemon de contêiner.</block>
+  <block id="d5cb5397b2f4727babe1417077f0cfd0" category="cell">VXLAN (Flanela)</block>
+  <block id="53dc538455257579c3d1a04ad3ee82a7" category="cell">Rede sobreposta para comunicação entre pods.</block>
+  <block id="491f9ca9a65625d41b7536f95a5829ee" category="admonition">Para implantações de alta disponibilidade (HA), certifique-se de que a porta UDP 8472 esteja aberta entre todos os nós.  Esta porta permite a comunicação entre pods em diferentes nós; bloqueá-la interromperá a rede entre os nós.</block>
+  <block id="622ebf1679f52188783e45799f3b70cb" category="summary">Adicionar novos hosts VMware vSphere às ONTAP tools for VMware vSphere.</block>
+  <block id="5aa6adafd8167a23c389304a0d6e16cb" category="doc">Adicionar novos hosts VMware vSphere</block>
+  <block id="a8626caa71cb3c13de333ded9fdfe5a8" category="paragraph">Adicione novos hosts VMware vSphere às ONTAP tools for VMware vSphere para gerenciar e proteger os datastores nesses hosts.</block>
+  <block id="020968a073f2c7584ecd5aaec97f88b0" category="inline-link">Como adicionar um host ESX ao seu cluster vSphere usando o fluxo de trabalho de início rápido</block>
+  <block id="0fdc03dfada440fcb45b31a6944bd23f" category="list-text">Adicione um host ao seu cluster VMware vSphere seguindo o fluxo de trabalho na página:<block ref="cf7664c28a8bbe5a872742d0c68a4d4b" category="inline-link-rx"></block></block>
+  <block id="9764e14a69d1669b765a8ac58a35d864" category="list-text">Após adicionar o host, acesse o menu principal das ferramentas ONTAP e selecione *Descobrir* no painel de visão geral.  Aguarde a conclusão do processo de descoberta.  Alternativamente, você pode aguardar a conclusão da descoberta de hosts agendada.</block>
+  <block id="c81c266dd6001708c9f3076ddf21214c" category="paragraph">O novo host foi descoberto e está sendo gerenciado pelas ONTAP tools for VMware vSphere.  Você pode prosseguir com o gerenciamento do armazenamento de dados no novo host.</block>
+  <block id="11d81e4c78f6be23d5539c87f4f3a7a7" category="list-text"><block ref="c5978119f323c1ceb37571472aaae169" category="inline-link-macro-rx"></block>em novos hosts.</block>
+  <block id="063680c82bcd7ffea25b1d4d5c3c6470" category="list-text"><block ref="b5251e50ffdcc6a83e84a63c2a1cd1e4" category="inline-link-macro-rx"></block>em novos hosts.</block>
+  <block id="77320a87e6ca763456023daeede0729f" category="inline-link">Adicionar um host ESX ao seu fluxo de trabalho de cluster vSphere</block>
+  <block id="91d42183cd7455cc3f88c0c77b61174e" category="admonition">Ao adicionar um novo host ESXi usando o<block ref="4954232b8967f3dbfaee01742ae35b89" category="inline-link-rx"></block> Aguarde a conclusão da descoberta de hosts agendada antes que ela apareça nas ferramentas do ONTAP .  Alternativamente, você pode executar a descoberta manualmente a partir da tela de visão geral das ferramentas do NetApp ONTAP .</block>
+  <block id="83c2a6ded9467f8048f9a53cabd2e783" category="paragraph-title">Tópico relacionado</block>
+  <block id="403e2c858b37daa43171ef37b71e6640" category="paragraph"><block ref="403e2c858b37daa43171ef37b71e6640" category="inline-link-macro-rx"></block></block>
+  <block id="17e484c8a86cb4a7c9192fe5d0393445" category="list-text">Digite *2* para selecionar o menu Configuração do Sistema.</block>
 </blocks>

@@ -13,6 +13,9 @@ summary: A montagem de um armazenamento de dados fornece acesso de armazenamento
 [role="lead"]
 A montagem de um armazenamento de dados fornece acesso de armazenamento a hosts adicionais.  Você pode montar o armazenamento de dados nos hosts adicionais depois de adicioná-los ao seu ambiente VMware.
 
+
+NOTE: Ao adicionar um novo host ESXi usando o https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/use-quickstart-to-add---host-to-a-cluster.html["Adicionar um host ESX ao seu fluxo de trabalho de cluster vSphere"] Aguarde a conclusão da descoberta de hosts agendada antes que ela apareça nas ferramentas do ONTAP .  Alternativamente, você pode executar a descoberta manualmente a partir da tela de visão geral das ferramentas do NetApp ONTAP .
+
 .Sobre esta tarefa
 * Algumas ações de clique com o botão direito do mouse ficam desabilitadas ou indisponíveis dependendo da versão do cliente vSphere e do tipo de armazenamento de dados selecionado.
 +
@@ -32,3 +35,6 @@ A montagem de um armazenamento de dados fornece acesso de armazenamento a hosts 
 
 .O que vem a seguir?
 Você pode acompanhar o progresso no painel de tarefas recentes.
+
+.Tópico relacionado
+link:../manage/add-vsphere-host.html["Adicionar novos hosts VMware vSphere"]

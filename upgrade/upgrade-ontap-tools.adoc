@@ -108,7 +108,7 @@ Um novo HDD será criado.  O provisionador de armazenamento dinâmico usa este H
 . Selecione o arquivo ISO e selecione *OK*.  Selecione a caixa de seleção conectada no campo *Unidade de CD/DVD*.image:../media/primaryvm-edit-settings.png["Editar configurações"]
 . No vCenter Server, abra um console para ferramentas ONTAP .
 . Efetue login como usuário de manutenção.
-. Digite *3* para selecionar o menu Configuração do Sistema.
+. Digite *2* para selecionar o menu Configuração do Sistema.
 . Digite *7* para selecionar a opção de atualização.
 . Ao atualizar, as seguintes ações são executadas automaticamente:
 +

@@ -84,85 +84,74 @@ https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src
 
 == Requisitos portuários
 
-A tabela a seguir descreve as portas de rede utilizadas pela NetApp e suas finalidades. Certifique-se de que essas portas estejam abertas e acessíveis para facilitar a operação e a comunicação adequadas dentro do sistema. Certifique-se de que as configurações de rede necessárias estejam implementadas para permitir o tráfego nessas portas e o funcionamento correto dos serviços associados. Dependendo das suas políticas de segurança, pode ser necessário configurar firewalls ou outros dispositivos de segurança para permitir esse tráfego na sua rede.
+A tabela a seguir descreve as portas de rede utilizadas pela NetApp e suas finalidades. Existem três tipos diferentes de portas:
+
+* Portas externas: Essas portas são acessíveis de fora do cluster ou nó do Kubernetes.  Eles permitem que os serviços se comuniquem com redes ou usuários externos, possibilitando a integração com sistemas fora do ambiente de cluster.
+* Portas entre nós: Essas portas permitem a comunicação entre os nós dentro do cluster Kubernetes.  São necessários para tarefas em cluster, como compartilhamento de dados e trabalho em conjunto.  Em implantações com um único nó, as portas entre nós são usadas apenas dentro do próprio nó e não precisam de acesso externo.  As portas entre nós podem aceitar tráfego de fora do cluster.  Bloqueie o acesso à internet das portas entre nós usando regras de firewall.
+* Portas internas: Essas portas comunicam-se dentro do cluster Kubernetes usando endereços ClusterIP.  Eles não são expostos externamente e não precisam ser adicionados às regras do firewall.
+
+
+
+NOTE: Certifique-se de que todos os nós das ferramentas ONTAP residam na mesma sub-rede para manter uma comunicação ininterrupta entre si.
+
 
 |===
+| *Nome do serviço/componente* | *Porta* | *Protocolo* | *Tipo de porta* | *Descrição* 
 
 
-| *Porta* | *Protocolo* | *Descrição* 
+| serviço ntv-gateway (LB) | 443, 8443 | TCP | Externo | Porta de passagem para comunicação de entrada do serviço VASA Provider. O certificado autoassinado do provedor VASA e o certificado CA personalizado são hospedados nesta porta. 
 
 
-| 8143 | TCP | Conexões HTTP/HTTPS para ferramentas ONTAP . 
+| SSH | 22 | TCP | Externo | Shell seguro para login remoto em servidores e execução de comandos. 
 
 
-| 8043 | TCP | Conexões HTTP/HTTPS para ferramentas ONTAP . 
+| servidor rke2 | 9345 | TCP | Inter-nó | API supervisora RKE2 (Restringir a redes confiáveis). 
 
 
-| 9060 | TCP | Conexões HTTP/HTTPS para ferramentas ONTAP . 
+| kube-apiserver | 6443 | TCP | Inter-nó | Porta do servidor da API do Kubernetes (Restringir a redes confiáveis). 
 
 
-| 22 | TCP | O Ansible usa essa porta SSH para comunicação durante o provisionamento do cluster.  Esta porta é necessária para funcionalidades como alteração de senha do usuário de manutenção, mensagens de status e para atualizar valores em todos os três nós no caso de configuração de HA. 
+| rpcbind/portmapper | 111 | TCP/UDP | Inter-nó | Utilizado para comunicação RPC entre serviços. 
 
 
-| 443 | TCP | Esta é a porta de passagem para comunicação de entrada para o serviço do Provedor VASA.  O certificado autoassinado do provedor VASA e o certificado CA personalizado são hospedados nesta porta. 
+| núcleos (DNS) | 53 | TCP/UDP | Inter-nó | Serviço de Sistema de Nomes de Domínio (DNS) para resolução de nomes dentro do cluster. 
 
 
-| 8443 | TCP | Esta porta hospeda a documentação da API por meio do swagger e do aplicativo de interface de usuário do Manager. 
+| NTP | 123 | UDP | Inter-nó | Protocolo de Tempo de Rede (NTP) para sincronização de tempo. 
 
 
-| 2379 | TCP | Esta é a porta padrão para solicitações de clientes, como obter, colocar, excluir ou observar chaves no armazenamento de valores de chave do etcd. 
+| etcd | 2379, 2380, 2381 | TCP | Inter-nó | Armazenamento de chave-valor para dados de cluster. 
 
 
-| 2380 | TCP | Esta é a porta padrão para comunicação de servidor para servidor para o cluster etcd usada para o algoritmo de consenso raft, no qual o etcd se baseia para replicação e consistência de dados. 
+| kube-vip | 2112 | TCP | Inter-nó | Porta do servidor da API do Kubernetes. 
 
 
-| 7472 | TCP/UDP | Esta é a porta de serviço de métricas do Prometheus. 
+| kubelet | 10248, 10250 | TCP | Inter-nó | Componente do Kubernetes 
 
 
-| 7946 | TCP/UDP | Esta porta é usada para descoberta de rede de contêineres do Docker. 
+| kube-controlador | 10257 | TCP | Inter-nó | Componente do Kubernetes 
 
 
-| 9083 | TCP | Esta porta é uma porta de serviço usada internamente para o serviço do Provedor VASA. 
+| controlador de nuvem | 10258 | TCP | Inter-nó | Componente do Kubernetes 
 
 
-| 1162 | UDP | Esta é a porta de pacotes de trap SNMP. 
+| kube-scheduler | 10259 | TCP | Inter-nó | Componente do Kubernetes 
 
 
-| 6443 | TCP | Fonte: nós de agentes RKE2.  Destino: nós do servidor REK2.  Descrição: API do Kubernetes 
+| kube-proxy | 10249, 10256 | TCP | Inter-nó | Componente do Kubernetes 
 
 
-| 9345 | TCP | Fonte: nós de agentes RKE2.  Destino: nós do servidor REK2.  Descrição: API do supervisor REK2 
+| nó-calico | 9091, 9099 | TCP | Inter-nó | Componente de rede Calico. 
 
 
-| 8472 | TCP+UDP | Todos os nós precisam ser capazes de alcançar outros nós pela porta UDP 8472 quando o Flannel VXLAN for usado.  Fonte: todos os nós RKE2.  Destino: todos os nós REK2.  Descrição: Canal CNI com VXLAN 
+| containerd | 10010 | TCP | Inter-nó | Serviço daemon de contêiner. 
 
 
-| 10250 | TCP | Fonte: todos os nós RKE2.  Destino: todos os nós REK2.  Descrição: Métricas do Kubelet 
-
-
-| 30000-32767 | TCP | Fonte: todos os nós RKE2.  Destino: todos os nós REK2.  Descrição: Intervalo de portas NodePort 
-
-
-| 123 | TCP | O Ntpd usa esta porta para realizar a validação do servidor NTP. 
-
-
-| 137-139 | TCP/UDP | Pacotes de compartilhamento SMB/Windows. 
-
-
-| 6789 | TCP | Monitor Ceph (MON) 
-
-
-| 3300 | TCP | Monitor Ceph (MON) 
-
-
-| 6800-7300 | TCP | Gerenciadores Ceph, OSDs e Sistema de Arquivos (MDS). 
-
-
-| 80 | TCP | Gateway Ceph RADOS (RGW) 
-
-
-| 9080 | TCP | Conexões VP HTTP/HTTPS (somente de 127.0.0.0/8 para IPv4 ou ::1/128 para IPv6). 
+| VXLAN (Flanela) | 8472 | UDP | Inter-nó | Rede sobreposta para comunicação entre pods. 
 |===
+
+NOTE: Para implantações de alta disponibilidade (HA), certifique-se de que a porta UDP 8472 esteja aberta entre todos os nós.  Esta porta permite a comunicação entre pods em diferentes nós; bloqueá-la interromperá a rede entre os nós.
+
 
 
 == Limites de configuração para implantar ONTAP tools for VMware vSphere
