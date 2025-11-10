@@ -103,7 +103,13 @@ Um novo HDD será criado.  O provisionador de armazenamento dinâmico usa este H
 
 .Passos
 . Carregue ONTAP tools for VMware vSphere para biblioteca de conteúdo.
-. Na página principal da VM, selecione *Ações* > *Editar configurações*
+. Na página principal da VM, selecione *Ações* > *Editar configurações*. Para identificar o nome da máquina virtual principal:
++
+.. Ative o shell de diagnóstico em qualquer nó.
+.. Execute o seguinte comando:
+`grep sourceHost /opt/netapp/meta/ansible_vars.yaml`
+
+
 . Selecione o arquivo ISO da biblioteca de conteúdo na janela de edição de configurações no campo *Unidade de CD/DVD*.
 . Selecione o arquivo ISO e selecione *OK*.  Selecione a caixa de seleção conectada no campo *Unidade de CD/DVD*.image:../media/primaryvm-edit-settings.png["Editar configurações"]
 . No vCenter Server, abra um console para ferramentas ONTAP .

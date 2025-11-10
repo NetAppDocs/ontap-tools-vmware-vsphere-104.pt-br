@@ -1775,14 +1775,8 @@
   <block id="9f147a250dd9a5cd9d9745eb3f5f7668" category="paragraph">Atualize o URL do proxy do AutoSupport para garantir o funcionamento adequado do recurso AutoSupport em cenários em que um servidor proxy é usado para controle de acesso à rede ou medidas de segurança.  Ele permite que os dados do AutoSupport sejam roteados pelo proxy apropriado, permitindo transmissão segura e conformidade.</block>
   <block id="d49d8a5effc0a522fa72d0ff457066df" category="list-text">Insira um *URL de proxy* válido e salve as alterações.</block>
   <block id="eb587ff6958c1e65b721306af8fa8e3b" category="paragraph">Se você desabilitar o AutoSupport, o URL do proxy também será desabilitado.</block>
-  <block id="a6f65a806180d1ff3c8d5e553e634e9d" category="summary">Você pode atualizar as credenciais do vCenter Server e do ONTAP usando o console de manutenção.</block>
-  <block id="f72e000ebb4c7bedf651a46e595f1371" category="doc">Atualize as credenciais do vCenter Server e do ONTAP</block>
-  <block id="7ac19aa441feceb73519a5108d4cc366" category="paragraph">Você pode atualizar a instância do vCenter Server e as credenciais do ONTAP usando o console de manutenção.</block>
   <block id="21a56b485fb6cd9f7c9cc8f514440950" category="paragraph">Você precisa ter credenciais de login de usuário de manutenção.</block>
-  <block id="1f8bb3d639d4544a4979b060d7cccc88" category="paragraph">Se você alterou as credenciais do vCenter Server, ONTAP ou Data LIF após a implantação, será necessário atualizar as credenciais usando este procedimento.</block>
   <block id="cea5a13834803a12adaeb249165351df" category="list-text">Digitar<block ref="c81e728d9d4c2f636f067f89cc14862c" prefix=" " category="inline-code"></block> para selecionar o Menu de Configuração do Sistema.</block>
-  <block id="86ce6e9c3af571980099ca308cd245e3" category="list-text">Digitar<block ref="45c48cce2e2d7fbdea1afc51c7c6ad26" prefix=" " category="inline-code"></block> para alterar as credenciais do ONTAP .</block>
-  <block id="207c00a73dde0270cc0fbc7ce9c5f2fd" category="list-text">Digitar<block ref="d3d9446802a44259755d38e6d163e820" prefix=" " category="inline-code"></block> para alterar as credenciais do vCenter.</block>
   <block id="d3cd4bffc1abc46e60337f8438f457b9" category="summary">A exibição de armazenamento mostra a lista de vVols criados pela máquina virtual.</block>
   <block id="f6607063532d19e10b746de0f6108f15" category="doc">Visualização de armazenamento da máquina virtual</block>
   <block id="9d850336a156831a9095fd981a1a0c23" category="admonition">Esta visualização é aplicável para a VM que tem pelo menos um disco relacionado ao armazenamento de dados vVols gerenciado ONTAP tools for VMware vSphere montado nela.</block>
@@ -2284,7 +2278,6 @@
   <block id="cd457aeee08a9f6476660a1f15284160" category="paragraph">Após adicionar o disco rígido, atualize os recursos da VM para as respectivas configurações e reinicie a VM primária.</block>
   <block id="82c4bde04ac809c6d15f232949e072ce" category="paragraph">Um novo HDD será criado.  O provisionador de armazenamento dinâmico usa este HDD para gerar ou replicar os volumes.</block>
   <block id="b06f0e274f6c746f0d30521b5c7f392e" category="list-text">Carregue ONTAP tools for VMware vSphere para biblioteca de conteúdo.</block>
-  <block id="dd5382558ec4a47dfbc203fb25698772" category="list-text">Na página principal da VM, selecione *Ações* &gt; *Editar configurações*</block>
   <block id="ef9e53e40d78d57abe78283a3603eb4e" category="list-text">Selecione o arquivo ISO da biblioteca de conteúdo na janela de edição de configurações no campo *Unidade de CD/DVD*.</block>
   <block id="54a029420d74c0dff69239155cf510b5" category="inline-image-macro">Editar configurações</block>
   <block id="2c2d3019834934bb25449edddc396321" category="list-text">Selecione o arquivo ISO e selecione *OK*.  Selecione a caixa de seleção conectada no campo *Unidade de CD/DVD*.<block ref="af57a506b85774ef3a9f849e2b26e258" category="inline-image-macro-rx" type="image"></block></block>
@@ -2433,4 +2426,12 @@
   <block id="83c2a6ded9467f8048f9a53cabd2e783" category="paragraph-title">Tópico relacionado</block>
   <block id="403e2c858b37daa43171ef37b71e6640" category="paragraph"><block ref="403e2c858b37daa43171ef37b71e6640" category="inline-link-macro-rx"></block></block>
   <block id="17e484c8a86cb4a7c9192fe5d0393445" category="list-text">Digite *2* para selecionar o menu Configuração do Sistema.</block>
+  <block id="f59d6f6c2fbe5659bab55bb335b17871" category="summary">Você pode atualizar as credenciais do vCenter Server usando o console de manutenção.</block>
+  <block id="d546c3915b2e0bc231d2bd0456f2d736" category="doc">Atualize as credenciais do vCenter Server.</block>
+  <block id="6e73e8087488ddc10c72aeec0f27cc93" category="paragraph">Você pode atualizar as credenciais da instância do vCenter Server usando o console de manutenção.</block>
+  <block id="1f2db2b2d242479839579d1cc7f9d26e" category="paragraph">Se você alterou as credenciais do vCenter Server após a implantação, será necessário atualizá-las seguindo este procedimento.</block>
+  <block id="a38dbe6982c223d82e53b7d0feab69ce" category="list-text">Digitar<block ref="c9f0f895fb98ab9159f51fd0297e236d" prefix=" " category="inline-code"></block> Para alterar as credenciais do vCenter.</block>
+  <block id="a928a1b805644ea87a643f7f8d60a477" category="list-text">Na página principal da VM, selecione *Ações* &gt; *Editar configurações*. Para identificar o nome da máquina virtual principal:</block>
+  <block id="75a86edd37c9b2122be450b28fa09149" category="list-text">Ative o shell de diagnóstico em qualquer nó.</block>
+  <block id="e016d50ae26af4214e6a864c1c2c8db5" category="list-text">Execute o seguinte comando:<block ref="1ebe86b64a17c55ae52f4488cffae75f" prefix=" " category="inline-code"></block></block>
 </blocks>
