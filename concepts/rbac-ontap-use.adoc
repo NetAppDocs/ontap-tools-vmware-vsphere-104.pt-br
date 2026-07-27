@@ -15,6 +15,7 @@ Há vários aspectos das ONTAP tools for VMware vSphere 10 RBAC com ONTAP que vo
 
 
 
+[[overview-of-the-configuration-process]]
 == Visão geral do processo de configuração
 
 As ONTAP tools for VMware vSphere 10 incluem suporte para criar um usuário ONTAP com uma função personalizada. As definições são empacotadas em um arquivo JSON que você pode carregar no cluster ONTAP . Você pode criar o usuário e adaptar a função ao seu ambiente e às suas necessidades de segurança.
@@ -41,18 +42,21 @@ Como parte da definição da função, você precisa tomar diversas decisões ad
 
 
 
+[[configure-the-role-using-system-manager]]
 == Configurar a função usando o Gerenciador de Sistema
 
 Depois de começar a criar um novo usuário e função com o System Manager e carregar o arquivo JSON, você pode personalizar a função com base no seu ambiente e necessidades.
 
 
 
+[[core-user-and-role-configuration]]
 === Configuração de usuário e função principais
 
 As definições do RBAC são agrupadas como vários recursos de produto, incluindo combinações de VSC, VASA Provider e SRA.  Você deve selecionar o ambiente ou ambientes onde precisa de suporte RBAC.  Por exemplo, se você quiser que as funções suportem o recurso de plug-in remoto, selecione VSC.  Você também precisa escolher o nome de usuário e a senha associada.
 
 
 
+[[privileges]]
 === Privileges
 
 Os privilégios de função são organizados em quatro conjuntos com base no nível de acesso necessário ao armazenamento ONTAP .  Os privilégios nos quais as funções são baseadas incluem:
@@ -77,6 +81,7 @@ Esta função permite que você destrua o armazenamento.  Ele também inclui tod
 
 
 
+[[generate-the-user-with-a-role]]
 === Gerar o usuário com uma função
 
 Depois de selecionar as opções de configuração para seu ambiente, clique em *Adicionar* e o ONTAP criará o usuário e a função.  O nome da função gerada é uma concatenação dos seguintes valores:

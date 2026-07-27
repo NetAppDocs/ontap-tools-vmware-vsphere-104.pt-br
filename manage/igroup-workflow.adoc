@@ -228,6 +228,7 @@ https://docs.netapp.com/us-en/ontap/san-admin/igroups-concept.html["Sobre igroup
 
 
 
+[[export-policies]]
 == Políticas de exportação
 
 As políticas de exportação controlam o acesso aos armazenamentos de dados NFS nas ONTAP tools for VMware vSphere.  Eles definem quais clientes podem acessar os armazenamentos de dados e quais permissões eles têm.  As políticas de exportação são criadas e gerenciadas em sistemas ONTAP e podem ser associadas a armazenamentos de dados NFS para impor o controle de acesso.  Cada política de exportação consiste em regras que especificam os clientes (endereços IP ou sub-redes) que têm permissão de acesso e as permissões concedidas (somente leitura ou leitura-gravação).

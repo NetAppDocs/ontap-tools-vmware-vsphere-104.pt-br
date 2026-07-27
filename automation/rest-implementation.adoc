@@ -20,6 +20,7 @@ A API REST inclui diversas categorias de recursos, como vCenters e Agregados.  R
 
 
 
+[[how-to-access-the-rest-api]]
 == Como acessar a API REST
 
 Você pode acessar as ONTAP tools for VMware vSphere 10 por meio do endereço IP das ferramentas ONTAP junto com a porta.  Há várias partes no URL completo, incluindo:
@@ -47,12 +48,14 @@ Esta URL pode ser usada para solicitar uma lista das instâncias definidas do se
 
 
 
+[[http-details]]
 == Detalhes HTTP
 
 As ONTAP tools for VMware vSphere 10 usam HTTP e parâmetros relacionados para atuar nas instâncias e coleções de recursos.  Detalhes da implementação do HTTP são apresentados abaixo.
 
 
 
+[[http-methods]]
 === Métodos HTTP
 
 Os métodos ou verbos HTTP suportados pela API REST são apresentados na tabela abaixo.
@@ -78,6 +81,7 @@ Os métodos ou verbos HTTP suportados pela API REST são apresentados na tabela 
 |===
 
 
+[[request-and-response-headers]]
 === Cabeçalhos de solicitação e resposta
 
 A tabela a seguir resume os cabeçalhos HTTP mais importantes usados com a API REST.
@@ -97,6 +101,7 @@ A tabela a seguir resume os cabeçalhos HTTP mais importantes usados com a API R
 |===
 
 
+[[http-status-codes]]
 === Códigos de status HTTP
 
 Os códigos de status HTTP usados pela API REST são descritos abaixo.
@@ -137,6 +142,7 @@ Os códigos de status HTTP usados pela API REST são descritos abaixo.
 |===
 
 
+[[authentication]]
 == Autenticação
 
 A autenticação de um cliente na API REST é realizada usando um token de acesso.  As características relevantes do token e do processo de autenticação incluem:
@@ -151,6 +157,7 @@ Consultelink:../automation/first-call.html["Sua primeira chamada de API REST"] p
 
 
 
+[[synchronous-and-asynchronous-requests]]
 == Solicitações síncronas e assíncronas
 
 A maioria das chamadas da API REST são concluídas rapidamente e, portanto, executadas de forma síncrona.  Ou seja, eles retornam um código de status (como 200) após uma solicitação ser concluída.  Solicitações que demoram mais para serem concluídas são executadas de forma assíncrona usando um trabalho em segundo plano.

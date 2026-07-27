@@ -18,6 +18,7 @@ Você pode emitir uma chamada de API usando curl para começar a usar as ONTAP t
 
 
 
+[[before-you-begin]]
 == Antes de começar
 
 Você deve revisar as informações e os parâmetros necessários nos exemplos de curl.
@@ -58,6 +59,7 @@ echo $FQDN_IP
 ----
 
 
+[[step-1-acquire-an-access-token]]
 == Etapa 1: Adquira um token de acesso
 
 Você precisa adquirir um token de acesso para usar a API REST.  Um exemplo de como solicitar um token de acesso é apresentado abaixo.  Você deve substituir os valores apropriados para seu ambiente.
@@ -74,6 +76,7 @@ Copie e salve o token de acesso fornecido na resposta.
 
 
 
+[[step-2-issue-the-rest-api-call]]
 == Etapa 2: emitir a chamada da API REST
 
 Depois de obter um token de acesso, você pode usar curl para emitir uma chamada de API REST.  Inclua o token de acesso adquirido na primeira etapa.

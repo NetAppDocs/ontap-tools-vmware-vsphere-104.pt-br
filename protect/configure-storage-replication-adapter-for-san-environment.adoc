@@ -15,6 +15,7 @@ Você deve configurar os sistemas de armazenamento antes de executar o Storage R
 
 
 
+[[configure-sra-for-san-environments]]
 == Configurar SRA para ambientes SAN
 
 .Antes de começar
@@ -44,6 +45,7 @@ Você pode fazer isso verificando se os hosts ESXi têm LUNs locais conectados n
 
 
 
+[[configure-sra-for-nas-environments]]
 == Configurar SRA para ambientes NAS
 
 .Antes de começar

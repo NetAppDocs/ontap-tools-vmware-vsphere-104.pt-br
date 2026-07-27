@@ -661,7 +661,6 @@
   <block id="5a380329b1b069f97190a31ae38b4637" category="paragraph">Para obter mais informações sobre o uso do protocolo NVMe/FC com o VMware vSphere 8.0, consulte<block ref="9c081245622705d0f45a94665f8c99c0" category="inline-link-rx"></block> .</block>
   <block id="636da39a2033c6179a718983c5ce1222" category="inline-link">Guia de configuração do host ONTAP NVMe/FC</block>
   <block id="81ef6507a13da5635951bc5b533deb59" category="inline-link">TR-4684</block>
-  <block id="bcfcba3d84c95eb110df0649ab05c280" category="paragraph">Para obter mais informações sobre o uso de NVMe/FC com VMware vSphere 7.0, consulte<block ref="27816f9f9cf7e278691c8ea8c1dd01dc" category="inline-link-rx"></block> e<block ref="a23d4cc1b9464bb497e26d387d612153" category="inline-link-rx"></block> .</block>
   <block id="bb9abdb0ecdc4e8ad5c61844a27d7f18" category="list-text">Selecione o tipo de armazenamento de dados VMFS.</block>
   <block id="54823624f3ec81a67f0dafc81ea0fac9" category="list-text">Insira o nome, o tamanho e as informações de protocolo do armazenamento de dados no painel *Nome e Protocolo*. Se você optar por adicionar o novo armazenamento de dados a um cluster de armazenamento de dados VMFS existente, selecione o seletor de cluster de armazenamento de dados em Opções avançadas.</block>
   <block id="4ae15faab2ddb24edfab9e1f2a21a432" category="list-text">Selecione a VM de armazenamento no painel *Armazenamento*.  Forneça o *Nome do grupo iniciador personalizado* na seção *Opções avançadas*, conforme necessário.  Você pode escolher um igroup existente para o armazenamento de dados ou criar um novo igroup com um nome personalizado.</block>
@@ -1748,8 +1747,6 @@
   <block id="f54e212052df635bcc70d25302fd583e" category="paragraph">Desinstalar as ONTAP tools for VMware vSphere exclui todos os dados nas ferramentas.</block>
   <block id="82a00fc1c0ae6d437f6d942c64bee898" category="list-text">Remova ou mova todas as máquinas virtuais das ONTAP tools for VMware vSphere .</block>
   <block id="4ad237c48098cfd8973e73475bded403" category="list-text">Para remover as máquinas virtuais, consulte<block ref="c16fb322315174fa2c9720c74541cf45" category="inline-link-rx"></block></block>
-  <block id="59dd8a5d1e9605907341901d2760c087" category="inline-link">Como migrar sua máquina virtual com o Storage vMotion</block>
-  <block id="0166be8b4848389c414e9e383efe9111" category="list-text">Para movê-los para um armazenamento de dados não gerenciado, consulte<block ref="920cfb03e9def61d5164fb56cf050dd9" category="inline-link-rx"></block></block>
   <block id="f0833ce92c23eb056dde238669740988" category="list-text"><block ref="523efdef8100699453c6b07ce8f4921c" category="inline-link-macro-rx"></block>criado em ONTAP tools for VMware vSphere.</block>
   <block id="1d920979688b28c7b10ef84d14436f95" category="list-text">Se você habilitou o provedor VASA, selecione *Configurações* &gt; *Configurações do provedor VASA* &gt; *Cancelar registro* nas ferramentas ONTAP para cancelar o registro dos provedores VASA de todos os servidores vCenter.</block>
   <block id="02a713a12e2b216b65a52896d0728a0a" category="list-text">Desassocie todos os backends de armazenamento da instância do vCenter Server. Consulte <block ref="8f766e539ddb39a7c07c0c84dded1670" category="inline-link-macro-rx"></block> .</block>
@@ -2249,8 +2246,6 @@
   <block id="399a5cfe88876e091f96014da7798994" category="list-text">Na interface do usuário do ONTAP System Manager, pesquise o volume pelo nome na barra de pesquisa e abra o volume selecionando o nome.  Vá para o snapshot e adicione o snapshot desse volume.</block>
   <block id="a780a238f22a802c24a2182aea27323f" category="paragraph">*Faça o snapshot das ONTAP tools for VMware vSphere no vCenter (3 VMs no caso de implantação de alta disponibilidade, 1 VM no caso de implantação sem alta disponibilidade)*</block>
   <block id="c3710cf1c44da535612cf08236cee98f" category="list-text">Na interface de usuário do cliente vSphere, selecione a VM.</block>
-  <block id="a6d135b70268e6dae6e2414dc9c7e465" category="inline-link">Faça um instantâneo de uma máquina virtual</block>
-  <block id="ed05024ef185f71f630610fa2998b97c" category="list-text">Vá para a aba de instantâneos e selecione o botão *Tirar instantâneo*.  Tire um instantâneo inativo da VM.  Consulte<block ref="cfbcb02d8f4029fded9e80960c9fdffc" category="inline-link-rx"></block> para mais detalhes.</block>
   <block id="07cf559ee7bbc8841180f1dd59c2917f" category="paragraph">Antes de executar a atualização, exclua os pods concluídos do pacote de log com o prefixo “generate-support-bundle-job”.  Se a geração do pacote de suporte estiver em andamento, aguarde sua conclusão e exclua o pod.</block>
   <block id="7817c7412ad536f5c02bd959934f66d5" category="paragraph">Para qualquer tipo de atualização, você precisa adicionar uma unidade de disco rígido (HDD) adicional de 100 GB.  Para adicionar um HDD, execute a seguinte tarefa.</block>
   <block id="11873b433682caa870371cc1631ef90f" category="list-text">Selecione a VM na configuração de nó único ou todas as três VMs na configuração HA.</block>
@@ -2396,14 +2391,10 @@
   <block id="622ebf1679f52188783e45799f3b70cb" category="summary">Adicionar novos hosts VMware vSphere às ONTAP tools for VMware vSphere.</block>
   <block id="5aa6adafd8167a23c389304a0d6e16cb" category="doc">Adicionar novos hosts VMware vSphere</block>
   <block id="a8626caa71cb3c13de333ded9fdfe5a8" category="paragraph">Adicione novos hosts VMware vSphere às ONTAP tools for VMware vSphere para gerenciar e proteger os datastores nesses hosts.</block>
-  <block id="020968a073f2c7584ecd5aaec97f88b0" category="inline-link">Como adicionar um host ESX ao seu cluster vSphere usando o fluxo de trabalho de início rápido</block>
-  <block id="0fdc03dfada440fcb45b31a6944bd23f" category="list-text">Adicione um host ao seu cluster VMware vSphere seguindo o fluxo de trabalho na página:<block ref="cf7664c28a8bbe5a872742d0c68a4d4b" category="inline-link-rx"></block></block>
   <block id="9764e14a69d1669b765a8ac58a35d864" category="list-text">Após adicionar o host, acesse o menu principal das ferramentas ONTAP e selecione *Descobrir* no painel de visão geral.  Aguarde a conclusão do processo de descoberta.  Alternativamente, você pode aguardar a conclusão da descoberta de hosts agendada.</block>
   <block id="c81c266dd6001708c9f3076ddf21214c" category="paragraph">O novo host foi descoberto e está sendo gerenciado pelas ONTAP tools for VMware vSphere.  Você pode prosseguir com o gerenciamento do armazenamento de dados no novo host.</block>
   <block id="11d81e4c78f6be23d5539c87f4f3a7a7" category="list-text"><block ref="c5978119f323c1ceb37571472aaae169" category="inline-link-macro-rx"></block>em novos hosts.</block>
   <block id="063680c82bcd7ffea25b1d4d5c3c6470" category="list-text"><block ref="b5251e50ffdcc6a83e84a63c2a1cd1e4" category="inline-link-macro-rx"></block>em novos hosts.</block>
-  <block id="77320a87e6ca763456023daeede0729f" category="inline-link">Adicionar um host ESX ao seu fluxo de trabalho de cluster vSphere</block>
-  <block id="91d42183cd7455cc3f88c0c77b61174e" category="admonition">Ao adicionar um novo host ESXi usando o<block ref="4954232b8967f3dbfaee01742ae35b89" category="inline-link-rx"></block> Aguarde a conclusão da descoberta de hosts agendada antes que ela apareça nas ferramentas do ONTAP .  Alternativamente, você pode executar a descoberta manualmente a partir da tela de visão geral das ferramentas do NetApp ONTAP .</block>
   <block id="83c2a6ded9467f8048f9a53cabd2e783" category="paragraph-title">Tópico relacionado</block>
   <block id="403e2c858b37daa43171ef37b71e6640" category="paragraph"><block ref="403e2c858b37daa43171ef37b71e6640" category="inline-link-macro-rx"></block></block>
   <block id="17e484c8a86cb4a7c9192fe5d0393445" category="list-text">Digite *2* para selecionar o menu Configuração do Sistema.</block>
@@ -2442,4 +2433,10 @@
   <block id="f6b1c86e1a3631a7b24c17cc093409bb" category="list-text">Selecione a política de VM de armazenamento e a VM correspondente.</block>
   <block id="24347b3ddf5a25cc9c27e54ae285ade1" category="list-text">Selecione *Aplicar*.</block>
   <block id="60bf6f2a83b056efb443713ab85c7cc9" category="paragraph">O status de conformidade em *Conformidade da política de armazenamento de VM* é exibido como compatível. Informações relacionadas</block>
+  <block id="fa708df448b499a880141c721c544f14" category="paragraph">Para obter mais informações sobre como usar NVMe/FC com VMware vSphere 7.0, consulte <block ref="27816f9f9cf7e278691c8ea8c1dd01dc" category="inline-link-rx"></block> e <block ref="210fbfc4f91114a5e2edc5d409987e41" category="inline-link-rx"></block>.</block>
+  <block id="ae0aa1a81eb18e69d5fc662eaee0efd5" category="inline-link">Documentação técnica Broadcom</block>
+  <block id="563c4e1f66ab33a447a910bcffd17163" category="list-text">Adicione um host ao seu cluster VMware vSphere seguindo o fluxo de trabalho na página:<block ref="94f03a61d7283013b50d8cc8e88c9fd8" category="inline-link-rx"></block>.</block>
+  <block id="0198d63c7755c98e755c41135f163c6e" category="admonition">Ao adicionar um novo host ESXi usando o <block ref="94f03a61d7283013b50d8cc8e88c9fd8" category="inline-link-rx"></block>, aguarde a conclusão da descoberta agendada do host antes que ele apareça nas ONTAP tools. Como alternativa, você pode executar a descoberta manualmente na tela de visão geral do NetApp ONTAP tools.</block>
+  <block id="ea979d9a9cddfcb001c2c7866c21bc62" category="list-text">Para movê-los para um datastore não gerenciado, consulte <block ref="94f03a61d7283013b50d8cc8e88c9fd8" category="inline-link-rx"></block>.</block>
+  <block id="04b5525fb0dd70ed32ea9bb7a57dfaf6" category="list-text">Vá até a aba de snapshots e selecione o botão *Take Snapshot*. Tire um snapshot quiescido da VM. Consulte <block ref="94f03a61d7283013b50d8cc8e88c9fd8" category="inline-link-rx"></block> para obter detalhes.</block>
 </blocks>

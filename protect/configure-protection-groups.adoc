@@ -17,6 +17,7 @@ Ao adicionar um novo repositório de dados, você pode incluí-lo no grupo de re
 
 
 
+[[pair-protected-and-recovery-sites]]
 == Emparelhar locais protegidos e de recuperação
 
 Você deve emparelhar os sites protegidos e de recuperação criados usando seu vSphere Client para permitir que o Storage Replication Adapter (SRA) descubra os sistemas de armazenamento.
@@ -47,6 +48,7 @@ Os sites protegidos e de recuperação aparecerão na caixa de diálogo Objetos.
 
 
 
+[[configure-protection-groups]]
 == Configurar grupos de proteção
 
 .Antes de começar

@@ -15,6 +15,7 @@ As instâncias do vCenter Server são plataformas de gerenciamento central que p
 
 
 
+[[dissociate-storage-backends-with-the-vcenter-server-instance]]
 == Desassociar backends de armazenamento com a instância do vCenter Server
 
 A página de listagem do vCenter Server mostra o número associado de backends de armazenamento.  Cada instância do vCenter Server tem a opção de se associar ou desassociar de um backend de armazenamento.
@@ -29,6 +30,7 @@ A página de listagem do vCenter Server mostra o número associado de backends d
 
 
 
+[[modify-a-vcenter-server-instance]]
 == Modificar uma instância do vCenter Server
 
 Siga as etapas abaixo para modificar instâncias do vCenter Server.
@@ -42,6 +44,7 @@ Siga as etapas abaixo para modificar instâncias do vCenter Server.
 
 
 
+[[remove-a-vcenter-server-instance]]
 == Remover uma instância do vCenter Server
 
 Você precisa remover todos os backends de armazenamento conectados ao vCenter Server antes de removê-lo.

@@ -18,6 +18,7 @@ NOTE: Para migrar para HA quando o backup não HA estiver habilitado, desabilite
 
 
 
+[[create-backup-and-download-the-backup-file]]
 == Crie um backup e baixe o arquivo de backup
 
 .Passos
@@ -41,6 +42,7 @@ Na seção de arquivo, você pode ver o diretório.  O nome do diretório será 
 
 
 
+[[recover]]
 == Recuperar
 
 Para recuperar a configuração, desligue a máquina virtual existente e implante uma nova máquina virtual usando o OVA que foi usado na implantação inicial.

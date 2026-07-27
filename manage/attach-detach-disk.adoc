@@ -12,6 +12,7 @@ summary: Anexe um disco de dados a uma máquina virtual para expandir a capacida
 
 
 
+[[attach-a-data-disk-to-a-virtual-machine]]
 == Anexar um disco de dados a uma máquina virtual
 
 Anexe um disco de dados a uma máquina virtual para expandir a capacidade de armazenamento.
@@ -29,6 +30,7 @@ O disco rígido aparece na lista de dispositivos de hardware virtual.
 
 
 
+[[detach-a-data-disk-from-the-virtual-machine]]
 == Desanexar um disco de dados da máquina virtual
 
 Você pode desanexar um disco de dados conectado a uma máquina virtual quando ele não for mais necessário.  Quando você desvincula o disco da máquina virtual, ele não é excluído automaticamente; ele permanece no sistema de armazenamento ONTAP .
